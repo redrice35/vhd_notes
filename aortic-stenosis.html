@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대동맥판 협착증 — 미국·유럽·한국 기준 비교</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="home" href="index.html">← 노트 홈</a>
+  <h1>판막질환 · 대동맥판 협착</h1>
+  <nav class="tabs">
+    <a href="vhd.html">개요</a>
+    <a href="aortic-stenosis.html" aria-current="page">AS</a>
+    <a href="mitral-regurgitation.html">MR</a>
+    <a href="guidelines.html">최신 가이드라인</a>
+    <a href="guideline-history.html">가이드라인 변천</a>
+    <a href="korea-reimbursement.html">한국 급여</a>
+  </nav>
+  <button id="themeToggle" type="button">🌙 다크모드</button>
+</header>
+
+<main>
+  <h2 class="page">Aortic Stenosis</h2>
+  <p class="lede">같은 환자를 세 기준에 넣으면 답이 다릅니다. 가장 크게 갈리는 곳은 <b>무증상 중증 AS</b>(언제 할 것인가)와
+    <b>SAVR vs TAVI의 나이 기준</b>(무엇으로 할 것인가)입니다.</p>
+  <div class="disclaimer">결정 도구는 가이드라인 권고 문장을 단순화한 학습용 도구입니다. 실제 결정은 Heart Team 논의, 해부학적 평가(CT), 환자의 선호를 거쳐야 하며, 여기 표시된 등급은 원문에서 재구성한 값입니다.</div>
+
+  <!-- ============================================================ tool -->
+  <section id="tool">
+    <h2>결정 도구 — 세 기준의 권고를 나란히</h2>
+    <p class="subtitle">값을 바꾸면 바로 갱신됩니다. 사례를 눌러 시작해 보세요.</p>
+
+    <div class="tool">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px">
+        <span style="font-size:12px;color:var(--text-secondary);font-weight:600">사례</span>
+        <div class="seg" id="presets">
+          <button type="button" data-p="p1">72세 · 증상 · 저위험</button>
+          <button type="button" data-p="p2">66세 · 무증상 · Vmax 4.6</button>
+          <button type="button" data-p="p3">84세 · 고위험</button>
+          <button type="button" data-p="p4">58세 · 이엽판막</button>
+        </div>
+      </div>
+
+      <fieldset><legend>1 · 임상 상황과 중증도</legend>
+        <div class="tool-grid">
+          <div class="field"><label for="sym">증상</label>
+            <select id="sym">
+              <option value="sym">있음 (호흡곤란·흉통·실신·심부전)</option>
+              <option value="exsym">운동부하검사에서만 증상</option>
+              <option value="asym">없음 (운동검사 정상 또는 미시행)</option>
+            </select></div>
+          <div class="field"><label for="phen">AS 유형</label>
+            <select id="phen">
+              <option value="hg">중증 고압차 (Vmax ≥4.0 또는 MG ≥40)</option>
+              <option value="lflgr">저유량 저압차, LVEF &lt;50% (classical)</option>
+              <option value="lflgp">저유량 저압차, LVEF ≥50% (paradoxical)</option>
+              <option value="mod">중등도 AS</option>
+            </select></div>
+          <div class="field"><label for="lvef">LVEF (%)</label><input id="lvef" type="number" min="10" max="80" step="1"></div>
+          <div class="field cond" data-show="phen=hg"><label for="vmax">Vmax (m/s)</label><input id="vmax" type="number" min="2" max="7" step="0.1"></div>
+          <div class="field cond" data-show="phen=hg"><label for="mg">평균 압력차 MG (mmHg)</label><input id="mg" type="number" min="10" max="120" step="1"></div>
+          <div class="field cond" data-show="phen=lflgr"><label for="flowres">Dobutamine 부하 — flow reserve</label>
+            <select id="flowres"><option value="yes">있음, 중증 AS로 확인</option><option value="no">없음 / 결론 못 냄</option><option value="nd">미시행</option></select></div>
+        </div>
+        <div class="cond" data-show="sym=asym" style="margin-top:12px">
+          <div class="field"><span class="lab">무증상 환자의 위험 표지자</span>
+            <div class="checks" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+              <label><input type="checkbox" id="bnp"> BNP/NT-proBNP &gt;3배 (반복 측정)</label>
+              <label><input type="checkbox" id="prog"> Vmax 진행 ≥0.3 m/s/년</label>
+              <label><input type="checkbox" id="calc"> 심한 판막 석회화 (CT)</label>
+              <label><input type="checkbox" id="extol"> 운동검사에서 운동능력 저하</label>
+              <label><input type="checkbox" id="lvdecl"> LVEF가 3회 연속 검사에서 &lt;60%로 감소</label>
+            </div></div>
+          <div class="field" style="max-width:260px;margin-top:10px"><label for="bpfall">운동 중 수축기 혈압 하강</label>
+            <select id="bpfall"><option value="0">없음 / 미시행</option><option value="10">10–20 mmHg</option><option value="20">&gt;20 mmHg (지속)</option></select></div>
+        </div>
+        <div class="checks" style="margin-top:12px">
+          <label><input type="checkbox" id="osurg"> 다른 심장수술 예정 (CABG, 상행대동맥, 다른 판막)</label>
+        </div>
+      </fieldset>
+
+      <fieldset><legend>2 · 중재 방법을 정하는 요소</legend>
+        <div class="tool-grid">
+          <div class="field"><label for="age">나이 (세)</label><input id="age" type="number" min="18" max="100" step="1"></div>
+          <div class="field"><label for="sts">STS-PROM (%)</label><input id="sts" type="number" min="0" max="50" step="0.5">
+            <div class="hint">&lt;4 저위험 · 4–8 중위험 · &gt;8 고위험</div></div>
+          <div class="field"><label for="le">기대여명</label>
+            <select id="le"><option value="gt20">&gt;20년</option><option value="10to20">10–20년</option><option value="lt10">&lt;10년</option><option value="lt1">&lt;1년 또는 삶의 질 개선 기대 어려움</option></select></div>
+          <div class="field"><span class="lab">해부학·기타</span>
+            <div class="checks">
+              <label><input type="checkbox" id="inop"> 수술 불가 (prohibitive risk)</label>
+              <label><input type="checkbox" id="tf" checked> 경대퇴(TF) 접근 가능</label>
+              <label><input type="checkbox" id="bav"> 이엽 대동맥판 (BAV)</label>
+            </div></div>
+        </div>
+      </fieldset>
+
+      <div class="verdicts" id="verdicts"></div>
+      <div class="diffbox" id="diff"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ severity -->
+  <section id="severity">
+    <h2>중증도 — 세 기준은 같은 숫자를 씁니다</h2>
+    <p class="subtitle">중증 AS의 정의는 ASE/EACVI 방법론을 공통으로 물려받아 거의 같습니다. 차이는 "매우 중증"과 중등도의 경계에 있습니다.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th><span class="lin us">ACC/AHA 2020</span></th><th><span class="lin eu">ESC 2025</span></th><th><span class="lin kr">KSE 2023</span></th></tr></thead>
+      <tbody>
+        <tr><td><b>중증 (고압차)</b></td><td>Vmax ≥4.0 m/s 또는 MG ≥40 mmHg · AVA 보통 ≤1.0 cm² (필수 아님)</td><td>MG ≥40 · Vmax ≥4.0 · AVA ≤1.0 cm² (≤0.6 cm²/m²)</td><td>MG ≥40 · Vmax ≥4.0 (ACC/AHA 병기 사용)</td></tr>
+        <tr><td><b>"매우 중증" — 무증상에서 중재 기준</b></td><td>Vmax <b>≥5.0</b> m/s (IIa, B-R)</td><td>MG ≥60 또는 Vmax <b>&gt;5.0</b> m/s (IIa, B)</td><td><b>Vmax ≥4.5 m/s</b> — 한국 자료(RECOVERY) 근거</td></tr>
+        <tr><td><b>중등도</b></td><td>Vmax 3.0–3.9 · MG 20–39</td><td>AVA 1.0–1.5 cm² 또는 MG 25–40 (정상 유량)</td><td>20 ≤ MG &lt;40 · Vmax 3.0–3.9</td></tr>
+        <tr><td><b>저유량 저압차</b></td><td>D2 (LVEF &lt;50%, DSE) · D3 (LVEF ≥50%, SVi &lt;35)</td><td>SVi ≤35 mL/m², LVEF &lt;50% / ≥50%; CT 석회화 점수로 확인</td><td>DSE로 flow reserve 확인, 결론이 안 나면 영상 전문의 협진</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <!-- ============================================================ indications -->
+  <section id="indications">
+    <h2>중재 적응증 비교</h2>
+    <p class="subtitle">색은 권고 등급. 한국(KSE)은 등급 없이 알고리즘으로만 제시합니다.</p>
+    <div class="legend">
+      <span class="key"><span class="sw cls-I"></span>I</span><span class="key"><span class="sw cls-IIa"></span>IIa</span>
+      <span class="key"><span class="sw cls-IIb"></span>IIb</span><span class="key"><span class="sw cls-none"></span>권고 없음</span>
+      <span class="key"><span class="sw cls-KR"></span>KSE (등급 없음)</span>
+    </div>
+    <div class="table-wrap"><table class="grid classed">
+      <thead><tr><th style="width:28%">상황</th><th><span class="lin us">ACC/AHA 2020</span></th><th><span class="lin eu">ESC 2025</span></th><th><span class="lin kr">KSE 2023</span></th></tr></thead>
+      <tbody>
+        <tr><td>증상 있는 중증 고압차 AS</td><td class="cls-I">I (A)</td><td class="cls-I">I (B)</td><td class="cls-KR">AVR</td></tr>
+        <tr><td>저유량 저압차, LVEF &lt;50%</td><td class="cls-I">I (B-NR) — D2</td><td class="cls-I">I (B) — 중증도 확인 후</td><td class="cls-KR">DSE flow reserve 있고 고압차로 바뀌면 AVR</td></tr>
+        <tr><td>저유량 저압차, LVEF ≥50%</td><td class="cls-I">I (B-NR) — AS가 증상의 원인일 때</td><td class="cls-IIa">IIa (B)</td><td class="cls-KR">영상 전문의 협진, 추가 검사</td></tr>
+        <tr><td>무증상, LVEF &lt;50%</td><td class="cls-I">I (B-NR)</td><td class="cls-I">I (B)</td><td class="cls-KR">AVR</td></tr>
+        <tr><td>무증상, 다른 심장수술 예정</td><td class="cls-I">I (B-NR)</td><td class="cls-I">I</td><td class="cls-KR">AVR</td></tr>
+        <tr><td><b>무증상 중증 고압차, 표지자 없음, 저위험</b></td><td class="cls-none">권고 없음 — 경과 관찰</td><td class="cls-IIa"><b>IIa (A)</b> — 경과 관찰의 대안으로 조기 중재</td><td class="cls-none">경과 관찰</td></tr>
+        <tr><td>무증상 + 매우 중증</td><td class="cls-IIa">IIa (B-R) — Vmax ≥5</td><td class="cls-IIa">IIa (B) — MG ≥60 / Vmax &gt;5</td><td class="cls-KR">AVR — <b>Vmax ≥4.5</b></td></tr>
+        <tr><td>무증상 + BNP &gt;3배 / 빠른 진행</td><td class="cls-IIa">IIa (B-NR)</td><td class="cls-IIa">IIa (B) — 진행은 석회화 동반 시</td><td class="cls-KR">AVR</td></tr>
+        <tr><td>무증상 + 운동 중 혈압 하강</td><td class="cls-IIa">IIa (B-NR) — ≥10 mmHg</td><td class="cls-IIa">IIa (C) — &gt;20 mmHg 지속</td><td class="cls-KR">AVR (운동 불내성)</td></tr>
+        <tr><td>무증상 + LVEF 50–55%</td><td class="cls-IIb">IIb — 3회 연속 &lt;60%로 감소 시</td><td class="cls-IIa">IIa (B) — LVEF &lt;55%</td><td class="cls-none">—</td></tr>
+        <tr><td>중등도 AS + 다른 심장수술</td><td class="cls-IIb">IIb (C-EO)</td><td class="cls-IIa">IIa (C)</td><td class="cls-KR">AVR</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note" style="border-left-color:var(--status-warning)"><b>가장 큰 차이</b> — 표지자 없는 무증상 중증 AS에 ESC 2025만 IIa(A)를 줍니다. 근거인 EARLY TAVR(2024)는 ACC/AHA의 문헌 검색 마감(2020년 3월) 이후에 나왔습니다.
+      의견 차이라기보다 <b>날짜 차이</b>입니다. 한국은 Vmax 기준만 4.5 m/s로 낮췄습니다.</p>
+  </section>
+
+  <!-- ============================================================ mode -->
+  <section id="mode">
+    <h2>SAVR vs TAVI — 선을 긋는 축이 위험도에서 나이로</h2>
+    <p class="subtitle">세 기준 모두 수술 위험도 대신 나이(기대여명의 대리지표)로 선을 긋지만, 그 나이가 다릅니다.</p>
+    <div class="table-wrap"><table class="grid classed">
+      <thead><tr><th></th><th>SAVR 쪽</th><th>둘 다 가능 (Heart Team)</th><th>TAVI 쪽</th></tr></thead>
+      <tbody>
+        <tr><td><span class="lin us">ACC/AHA 2020</span></td><td class="cls-I">&lt;65세 또는 기대여명 &gt;20년 · I (A)</td><td class="cls-I">65–80세: SAVR 또는 TF-TAVI · I (A)</td><td class="cls-I">&gt;80세 또는 기대여명 &lt;10년: TF-TAVI · I (A) · 고위험/수술불가: TAVI I (A)</td></tr>
+        <tr><td><span class="lin eu">ESC 2025</span></td><td class="cls-I">&lt;70세 + 저위험(STS &lt;4%): SAVR · I (B)</td><td class="cls-I">그 외: Heart Team · I (B)</td><td class="cls-I">≥70세 (삼엽판막, 해부학 적합): TAVI · I (A)</td></tr>
+        <tr><td><span class="lin kr">KSE 2023</span></td><td class="cls-KR">&lt;75세 + STS &lt;4%, 다른 심장수술, 기계판막 선호, TAVR 부적합</td><td class="cls-KR">그 외: Heart Team</td><td class="cls-KR">≥75세 또는 STS ≥8%, 수술 불가</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">KSE는 <b>ESC 2021의 75세 체계</b>를 택했습니다(본문은 ACC/AHA를 인용). 이후 ESC는 2025년에 70세로 내렸습니다.
+      이엽판막: ESC는 수술 위험이 높을 때만 TAVI IIb(B), KSE와 ACC/AHA도 SAVR이 더 적절하다고 봅니다. 무증상 + 표지자로 중재할 때 ACC/AHA는 <b>SAVR을 TAVI보다 우선</b>(I, B-NR)합니다.</p>
+  </section>
+
+  <!-- ============================================================ evidence -->
+  <section id="evidence">
+    <h2>근거 — 무작위 임상시험의 지형</h2>
+    <p class="subtitle">A: 위험도 하강 (수술불가 2010 → 저위험 2019) · B: 위험도 밖의 질문 · C: 언제 할 것인가 (무증상·중등도 AS)</p>
+    <figure class="fig"><img src="img/tavi-rct-landscape.png" alt="대동맥판 협착 무작위 임상시험: 수술 위험도, 환자군, 질환 단계의 세 축" loading="lazy">
+      <figcaption>버블 크기 ∝ 등록 환자 수 · 색 = 결과. 가이드라인 판 발표 시점을 점선으로 표시. 가이드라인 요약에서 수집한 자료이며 원 논문에서 직접 추출하지 않았습니다.</figcaption></figure>
+    <p class="note"><b>한국 자료</b> — RECOVERY(Kang 2020, NEJM)는 무증상 매우 중증 AS(Vmax ≥4.5 또는 MG ≥50)에서 조기 SAVR이 수술·심혈관 사망을 줄인 한국 RCT입니다(HR 0.09).
+      KSE의 4.5 m/s 기준이 여기서 나왔습니다. 2019 한국 레지스트리에서 중증 AS 중재의 39%가 TAVR였고, 병원 내 사망률은 보존적 치료 8.1% · SAVR 4.1% · TAVR 1.1%(보정 전)였습니다.</p>
+  </section>
+
+  <section id="sources">
+    <h2>출처</h2>
+    <p class="src">2020 ACC/AHA VHD guideline (Circulation 2021;143:e72) · 2025 ESC/EACTS VHD guideline (Eur Heart J 2025) · 2023 KSE position paper Part I: aortic valve disease
+      (J Cardiovasc Imaging 2024;32:11) · Korean Valve Survey (J Cardiovasc Imaging 2024;32:37). 이 사이트의 판별 표는 <a href="guideline-history.html">가이드라인 변천</a>에.</p>
+  </section>
+  <footer>최종 업데이트 2026-10-09</footer>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var PRESETS = {
+    p1: { sym:'sym', phen:'hg', lvef:60, vmax:4.3, mg:45, flowres:'yes', age:72, sts:2.5, le:'10to20', inop:false, tf:true, bav:false, osurg:false, bnp:false, prog:false, calc:false, extol:false, lvdecl:false, bpfall:'0' },
+    p2: { sym:'asym', phen:'hg', lvef:62, vmax:4.6, mg:52, flowres:'yes', age:66, sts:1.5, le:'gt20', inop:false, tf:true, bav:false, osurg:false, bnp:false, prog:false, calc:true, extol:false, lvdecl:false, bpfall:'0' },
+    p3: { sym:'sym', phen:'hg', lvef:45, vmax:4.1, mg:42, flowres:'yes', age:84, sts:9, le:'lt10', inop:false, tf:true, bav:false, osurg:false, bnp:false, prog:false, calc:false, extol:false, lvdecl:false, bpfall:'0' },
+    p4: { sym:'sym', phen:'hg', lvef:58, vmax:4.4, mg:50, flowres:'yes', age:58, sts:1.2, le:'gt20', inop:false, tf:true, bav:true, osurg:false, bnp:false, prog:false, calc:false, extol:false, lvdecl:false, bpfall:'0' }
+  };
+  var IDS = ['sym','phen','lvef','vmax','mg','flowres','age','sts','le','inop','tf','bav','osurg','bnp','prog','calc','extol','lvdecl','bpfall'];
+
+  function load(p) {
+    IDS.forEach(function (k) {
+      var el = $(k); if (!el) return;
+      if (el.type === 'checkbox') el.checked = !!p[k]; else el.value = p[k];
+    });
+  }
+  function read() {
+    var s = {};
+    IDS.forEach(function (k) {
+      var el = $(k);
+      s[k] = el.type === 'checkbox' ? el.checked : (el.type === 'number' ? parseFloat(el.value) : el.value);
+    });
+    s.bpfall = parseInt(s.bpfall, 10);
+    s.symptomatic = s.sym !== 'asym';
+    s.severe = s.phen !== 'mod';
+    s.lowRisk = !s.inop && s.sts < 4;
+    s.highRisk = s.inop || s.sts > 8;
+    return s;
+  }
+  function rec(cls, lvl, txt, why) { return { cls: cls, lvl: lvl, txt: txt, why: why || '' }; }
+
+  /* ---------------------------------------------------- ACC/AHA 2020 */
+  function acc(s) {
+    var ind = [], mode = [], marker = false, go = false;
+    if (s.le === 'lt1') return { ind: [rec('I', 'C-EO', '<b>완화의료</b> (shared decision-making)', '시술 후 예상 생존 <12개월 또는 삶의 질 개선이 미미할 때')], mode: [], go: false };
+    if (s.symptomatic) {
+      if (s.phen === 'hg') { ind.push(rec('I', 'A', '<b>AVR</b> — 증상 있는 중증 고압차 AS (D1)', s.sym === 'exsym' ? '운동부하검사에서 나타난 증상도 D1에 포함' : '')); go = true; }
+      else if (s.phen === 'lflgr') {
+        if (s.flowres === 'yes') { ind.push(rec('I', 'B-NR', '<b>AVR</b> — 저유량 저압차, LVEF 저하 (D2)', 'Dobutamine 부하에서 중증 확인')); go = true; }
+        else ind.push(rec('—', '', '중증도 확인 필요 — D2는 저용량 dobutamine 부하로 중증을 확인한 뒤에 I (B-NR)', 'flow reserve가 없으면 CT 석회화 점수 등으로 판단'));
+      }
+      else if (s.phen === 'lflgp') { ind.push(rec('I', 'B-NR', '<b>AVR</b> — 저유량 저압차, LVEF 보존 (D3)', 'AS가 증상의 가장 유력한 원인일 때')); go = true; }
+      else { if (s.osurg) { ind.push(rec('IIb', 'C-EO', 'AVR 고려 — 중등도 AS + 다른 심장수술')); go = true; } else ind.push(rec('—', '', '중등도 AS 단독은 AVR 적응증 아님 — 증상의 다른 원인 평가, 경과 관찰')); }
+    } else {
+      if (s.severe && s.lvef < 50) { ind.push(rec('I', 'B-NR', '<b>AVR</b> — 무증상 중증 AS + LVEF <50% (C2)')); go = true; }
+      if (s.severe && s.osurg) { ind.push(rec('I', 'B-NR', '<b>AVR</b> — 다른 심장수술과 동시')); go = true; }
+      if (!s.severe && s.osurg) { ind.push(rec('IIb', 'C-EO', 'AVR 고려 — 중등도 AS + 다른 심장수술')); go = true; }
+      if (s.phen === 'hg' && !go) {
+        var m = [];
+        if (s.vmax >= 5) m.push(rec('IIa', 'B-R', 'AVR — 매우 중증 (Vmax ≥5 m/s)'));
+        if (s.bnp) m.push(rec('IIa', 'B-NR', 'AVR — BNP >3배'));
+        if (s.prog) m.push(rec('IIa', 'B-NR', 'AVR — Vmax 진행 ≥0.3 m/s/년'));
+        if (s.extol || s.bpfall >= 10) m.push(rec('IIa', 'B-NR', 'AVR — 운동 능력 저하 또는 혈압 하강 ≥10 mmHg'));
+        if (s.lvdecl) m.push(rec('IIb', 'B-NR', 'AVR 고려 — LVEF가 3회 연속 <60%로 감소'));
+        if (m.length && s.lowRisk) { ind = ind.concat(m); go = true; marker = true; }
+        else if (m.length) ind.push(rec('—', '', '표지자가 있으나 IIa 권고는 <b>수술 저위험</b>에서만 — 경과 관찰', 'STS <4%이고 수술 가능해야 함'));
+        else ind.push(rec('—', '', '<b>적응증 없음</b> — 6–12개월마다 경과 관찰', '무증상 확인을 위한 운동부하검사 IIa (B-NR). 표지자 없는 무증상 AS에 대한 권고 자체가 없음'));
+      } else if (!go) ind.push(rec('—', '', '적응증 없음 — 경과 관찰'));
+    }
+    if (go) {
+      if (s.osurg) mode.push(rec('I', '', '<b>SAVR</b> — 예정된 심장수술과 동시에'));
+      else if (marker) mode.push(rec('I', 'B-NR', '<b>SAVR</b>을 TAVI보다 우선', '무증상 + 표지자(IIa 적응증)로 중재할 때'));
+      else if (s.highRisk) mode.push(rec('I', 'A', '<b>TAVI</b> — 고위험/수술 불가', '시술 후 생존 >12개월, 삶의 질 수용 가능할 때'));
+      else if (s.age < 65 || s.le === 'gt20') mode.push(rec('I', 'A', '<b>SAVR</b> — <65세 또는 기대여명 >20년'));
+      else if (s.age > 80 || s.le === 'lt10') mode.push(s.tf ? rec('I', 'A', '<b>경대퇴 TAVI</b>를 SAVR보다 우선 — >80세 또는 기대여명 <10년') : rec('—', '', 'TF 접근 불가 — SAVR(수술 가능 시) 또는 대체 경로 TAVI를 Heart Team이 결정'));
+      else mode.push(s.tf ? rec('I', 'A', '<b>SAVR 또는 경대퇴 TAVI</b> — 65–80세', '기대여명과 판막 내구성을 놓고 공유 의사결정') : rec('I', 'A', '<b>SAVR</b> — TF 접근이 부적합할 때'));
+      if (s.bav) mode.push(rec('—', '', '이엽판막: 주요 TAVI 시험에서 제외됨 — 해부학이 불리하면 SAVR', ''));
+    }
+    return { ind: ind, mode: mode, go: go };
+  }
+
+  /* ---------------------------------------------------- ESC 2025 */
+  function esc(s) {
+    var ind = [], mode = [], go = false;
+    if (s.le === 'lt1') return { ind: [rec('—', '', '기대여명 <1년 — 중재로 삶의 질 개선이 어려우면 완화 치료 (등급 있는 권고 없음)')], mode: [], go: false };
+    if (s.symptomatic) {
+      if (s.phen === 'hg') { ind.push(rec('I', 'B', '<b>중재</b> — 증상 있는 중증 고압차 AS', s.sym === 'exsym' ? '운동검사에서 증상이 나타나면 증상 있는 환자로 취급' : '')); go = true; }
+      else if (s.phen === 'lflgr') {
+        if (s.flowres === 'yes') { ind.push(rec('I', 'B', '<b>중재</b> — 저유량 저압차, LVEF <50%', '중증도 확인 후')); go = true; }
+        else ind.push(rec('—', '', '중증도 확인 필요 — CT 대동맥판 석회화 점수 등으로 확인한 뒤 I (B)'));
+      }
+      else if (s.phen === 'lflgp') { ind.push(rec('IIa', 'B', '<b>중재</b> — 저유량 저압차, LVEF ≥50%', '중증도 확인 후')); go = true; }
+      else { if (s.osurg) { ind.push(rec('IIa', 'C', 'SAVR — 중등도 AS + CABG/대동맥 수술')); go = true; } else ind.push(rec('—', '', '중등도 AS 단독은 중재 적응증 아님')); }
+    } else {
+      if (s.severe && s.lvef < 50) { ind.push(rec('I', 'B', '<b>중재</b> — 무증상 중증 AS + LVEF <50%')); go = true; }
+      if (s.severe && s.osurg) { ind.push(rec('I', '', '<b>SAVR</b> — CABG/상행대동맥 수술과 동시')); go = true; }
+      if (!s.severe && s.osurg) { ind.push(rec('IIa', 'C', 'SAVR — 중등도 AS + CABG/대동맥 수술')); go = true; }
+      if (s.severe && !go) {
+        if (s.bpfall >= 20) { ind.push(rec('IIa', 'C', '중재 — 운동 중 혈압 하강 >20 mmHg 지속')); go = true; }
+        if (s.phen === 'hg' && s.lvef >= 50) {
+          if (s.lowRisk) {
+            var m = [];
+            if (s.vmax > 5 || s.mg >= 60) m.push('매우 중증 (MG ≥60 / Vmax >5)');
+            if (s.calc && s.prog) m.push('심한 석회화 + 진행 ≥0.3 m/s/년');
+            if (s.bnp) m.push('BNP >3배');
+            if (s.lvef < 55) m.push('LVEF <55%');
+            if (m.length) ind.push(rec('IIa', 'B', '중재 — ' + m.join(', ')));
+            ind.push(rec('IIa', 'A', '<b>조기 중재</b> — 면밀한 경과 관찰의 대안으로', '표지자 없이도 해당. 근거: EARLY TAVR, RECOVERY, AVATAR, EVoLVeD'));
+            go = true;
+          } else if (!go) ind.push(rec('—', '', '무증상 IIa 권고는 <b>시술 저위험</b>에서만 — 최소 6개월마다 경과 관찰'));
+        } else if (!go) ind.push(rec('—', '', '적응증 없음 — 경과 관찰'));
+      } else if (!go) ind.push(rec('—', '', '적응증 없음 — 경과 관찰'));
+    }
+    if (go) {
+      mode.push(rec('I', 'C', '방법은 Heart Team이 <b>평생 관리와 기대여명</b>을 고려해 결정'));
+      if (s.osurg) mode.push(rec('I', '', '<b>SAVR</b> — 예정된 수술과 동시에'));
+      else if (s.bav) {
+        if (!s.lowRisk) mode.push(rec('IIb', 'B', '<b>TAVI</b> — 이엽판막, 수술 위험 증가, 해부학 적합 시'));
+        else mode.push(rec('—', '', '<b>SAVR</b> — 이엽판막은 TAVI 권고(IIb)가 수술 위험 증가 환자에 한정'));
+      } else if (s.age >= 70) {
+        mode.push(s.tf ? rec('I', 'A', '<b>TAVI</b> — ≥70세, 삼엽판막, 해부학 적합') : (s.inop ? rec('IIa', 'B', '<b>비경대퇴 TAVI</b> — 수술과 TF 모두 부적합') : rec('I', 'B', '<b>SAVR 또는 TAVI</b> — TF 부적합, Heart Team 결정')));
+      } else if (s.lowRisk) mode.push(rec('I', 'B', '<b>SAVR</b> — <70세 + 수술 저위험 (STS <4%)'));
+      else mode.push(s.inop && !s.tf ? rec('IIa', 'B', '<b>비경대퇴 TAVI</b> — 수술과 TF 모두 부적합') : rec('I', 'B', '<b>SAVR 또는 TAVI</b> — 나머지 환자, Heart Team 결정'));
+    }
+    return { ind: ind, mode: mode, go: go };
+  }
+
+  /* ---------------------------------------------------- KSE 2023 */
+  function kse(s) {
+    var ind = [], mode = [], go = false;
+    if (s.le === 'lt1') return { ind: [rec('KSE', '', '기대여명이 짧으면 중재보다 증상 조절 — Heart Team에서 개별 판단')], mode: [], go: false };
+    if (s.symptomatic) {
+      if (s.phen === 'hg') { ind.push(rec('KSE', '', '<b>AVR</b> — 증상 있는 중증 고압차 AS', s.sym === 'exsym' ? '운동 불내성은 무증상 AVR 기준에도 포함' : '')); go = true; }
+      else if (s.phen === 'lflgr') {
+        if (s.flowres === 'yes') { ind.push(rec('KSE', '', '<b>AVR</b> — flow reserve 있고 고압차로 바뀐 LEF LF-LG AS')); go = true; }
+        else ind.push(rec('KSE', '', '결론 못 냄 — 영상 전문의 협진, TEE·CT 석회화 점수·CMR'));
+      }
+      else if (s.phen === 'lflgp') ind.push(rec('KSE', '', 'NEF LF-LG AS — 영상 전문의 협진, CT 석회화 점수 등 추가 검사 후 결정'));
+      else { if (s.osurg) { ind.push(rec('KSE', '', '<b>AVR</b> — 중등도 AS + 다른 심장수술')); go = true; } else ind.push(rec('KSE', '', '중등도 AS — 경과 관찰')); }
+    } else {
+      if (s.phen === 'hg') {
+        var t = [];
+        if (s.lvef < 50) t.push('LVEF <50%');
+        if (s.osurg) t.push('다른 심장수술');
+        if (s.extol || s.bpfall > 0) t.push('운동 불내성');
+        if (s.vmax >= 4.5) t.push('<b>Vmax ≥4.5 m/s</b>');
+        if (s.bnp) t.push('BNP >3배');
+        if (s.prog) t.push('빠른 진행');
+        if (t.length) { ind.push(rec('KSE', '', '<b>AVR</b> — ' + t.join(', '), '알고리즘에 수술 위험도 조건은 없음')); go = true; }
+        else ind.push(rec('KSE', '', '경과 관찰 — 촉발 요인 없음'));
+      } else if (!s.severe && s.osurg) { ind.push(rec('KSE', '', '<b>AVR</b> — 중등도 AS + 다른 심장수술')); go = true; }
+      else ind.push(rec('KSE', '', s.severe ? '무증상 저압차 AS — 알고리즘에 경로 없음, 개별 평가' : '중등도 AS — 경과 관찰'));
+    }
+    if (go) {
+      if (s.osurg) mode.push(rec('KSE', '', '<b>SAVR 우선</b> — 다른 심장수술 필요'));
+      else if (s.bav) mode.push(rec('KSE', '', '<b>SAVR이 더 적절</b> — 이엽판막', '국내 BAV·TAVR 연구는 인용만, 수치 없음'));
+      else if (s.age >= 75 || s.sts >= 8 || s.inop) mode.push(rec('KSE', '', '<b>TAVR 우선</b> — ≥75세, STS ≥8% 또는 수술 불가', s.tf ? '경대퇴 접근이 가능하면 특히' : 'TF 접근 불가 — 대체 경로 여부를 Heart Team이 판단'));
+      else if (s.age < 75 && s.sts < 4) mode.push(rec('KSE', '', '<b>SAVR 우선</b> — <75세 + STS <4%', '판막 내구성이 중요한 젊은 저위험 환자'));
+      else mode.push(rec('KSE', '', '<b>SAVR 또는 TAVR</b> — 그 외 환자, Heart Team'));
+    }
+    return { ind: ind, mode: mode, go: go };
+  }
+
+  function renderRecs(list) {
+    return list.map(function (r) {
+      var c = r.cls === '—' ? '<span class="chip cls-none">—</span>' : (r.cls === 'KSE' ? '<span class="chip cls-KR">KSE</span>' : chip(r.cls, r.lvl));
+      return '<div class="rec">' + c + '<div class="txt">' + r.txt + (r.why ? '<span class="why">' + r.why + '</span>' : '') + '</div></div>';
+    }).join('');
+  }
+  function card(cls, name, ed, r) {
+    return '<div class="verdict ' + cls + '"><div class="vh"><span>' + name + '</span><span class="ed">' + ed + '</span></div><div class="vb">' +
+      '<div class="step">중재 적응증</div>' + renderRecs(r.ind) +
+      (r.mode.length ? '<div class="step">방법</div>' + renderRecs(r.mode) : '') + '</div></div>';
+  }
+  /* Which way does a guideline lean? Read only its main mode recommendation
+     (skip ESC's generic Heart-Team line and caveat notes), then use word order:
+     "A 또는 B" = either; whichever of SAVR / TAVI(TAVR) is named first wins. */
+  function summary(r) {
+    if (!r.go) return 'none';
+    var main = r.mode.filter(function (m) { return !/평생 관리와 기대여명/.test(m.txt) && !/^이엽판막:/.test(m.txt); })[0];
+    if (!main) return 'either';
+    var t = main.txt.replace(/<[^>]+>/g, '');
+    var head = t.split('—')[0];                     // the recommendation itself, not its criteria
+    if (!/SAVR|TAVI|TAVR/.test(head)) head = t;
+    var both = /SAVR/.test(head) && /TAVI|TAVR/.test(head);
+    if (both && !/보다/.test(head)) return 'either';
+    var iS = head.search(/SAVR/), iT = head.search(/TAVI|TAVR/);
+    if (iT >= 0 && (iS < 0 || iT < iS)) return 'tavi';
+    if (iS >= 0) return 'savr';
+    return 'either';
+  }
+  var LABEL = { none: '중재 안 함', tavi: 'TAVI 쪽', savr: 'SAVR 쪽', either: 'SAVR·TAVI 모두 가능' };
+
+  function update() {
+    var s = read();
+    document.querySelectorAll('.cond').forEach(function (el) {
+      var kv = el.getAttribute('data-show').split('='); el.hidden = s[kv[0]] !== kv[1];
+    });
+    var a = acc(s), e = esc(s), k = kse(s);
+    $('verdicts').innerHTML = card('us', '미국 ACC/AHA', '2020', a) + card('eu', '유럽 ESC/EACTS', '2025', e) + card('kr', '한국 KSE', '2023', k);
+    var sa = summary(a), se = summary(e), sk = summary(k);
+    var d = $('diff');
+    if (sa === se && se === sk) { d.innerHTML = '<b>세 기준의 방향이 같습니다</b> — ' + LABEL[sa] + '.'; }
+    else d.innerHTML = '<b>세 기준이 갈립니다</b> — 미국: ' + LABEL[sa] + ' · 유럽: ' + LABEL[se] + ' · 한국: ' + LABEL[sk] +
+      '. 무증상 AS의 조기 중재(유럽만 IIa A), SAVR/TAVI 나이 기준(65–80 / 70 / 75), 매우 중증 기준(5.0 / 5.0 / 4.5 m/s) 중 어디서 갈렸는지 위 카드에서 확인하세요.';
+  }
+
+  IDS.forEach(function (k) { var el = $(k); el.addEventListener(el.type === 'number' ? 'input' : 'change', update); });
+  document.querySelectorAll('#presets button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('#presets button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', 'true'); load(PRESETS[b.getAttribute('data-p')]); update();
+    });
+  });
+  var start = document.querySelector('#presets button[data-p="' + location.hash.slice(1) + '"]') || document.querySelector('#presets button');
+  start.click();
+})();
+</script>
+</body>
+</html>

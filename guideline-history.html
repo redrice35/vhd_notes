@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>가이드라인 변천 2012–2025 — 수술과 시술 사이의 선</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  table.ed td, table.ed th { font-size:12.5px; }
+  table.ed td.edn { font-weight:700; white-space:nowrap; }
+  table.ed td.edn small { display:block; font-weight:400; color:var(--text-muted); }
+  table.ed td.flag { text-align:center; font-weight:700; white-space:nowrap; }
+  table.ed td.flag.yes { background:#e3f1e4; color:#1b4d1f; }
+  :root[data-theme="dark"] table.ed td.flag.yes { background:#1f3a24; color:#bfe6c4; }
+  table.ed th.teer { background:#3d2c8d; color:#fff; }
+  table.ed tr.kse td { border-top:3px solid var(--grid); }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="home" href="index.html">← 노트 홈</a>
+  <h1>판막질환 · 가이드라인 변천</h1>
+  <nav class="tabs">
+    <a href="vhd.html">개요</a>
+    <a href="aortic-stenosis.html">AS</a>
+    <a href="mitral-regurgitation.html">MR</a>
+    <a href="guidelines.html">최신 가이드라인</a>
+    <a href="guideline-history.html" aria-current="page">가이드라인 변천</a>
+    <a href="korea-reimbursement.html">한국 급여</a>
+  </nav>
+  <button id="themeToggle" type="button">🌙 다크모드</button>
+</header>
+
+<main>
+  <h2 class="page">Redrawing the Lines Between Surgery and Intervention</h2>
+  <p class="lede">2012 ESC부터 2025 ESC까지 일곱 개 판, 그리고 그 사이에 발표된 무작위 임상시험. AS에서는 선이 <b>위험도에서 나이로</b>,
+    MR에서는 <b>원인별로</b> 다시 그어졌습니다.</p>
+
+  <section id="timeline">
+    <h2>연대기 — 가이드라인과 임상시험을 한 축에</h2>
+    <p class="subtitle">1행: 판별 핵심 변화 (위 미국, 아래 유럽) · 2행: AS 시험, 수술불가 → 중등도 AS로 내려가는 계단 · 3행: MR 시험, 원인과 비교군별</p>
+    <figure class="fig"><a href="img/vhd-guideline-trial-timeline.png" target="_blank" rel="noopener"><img src="img/vhd-guideline-trial-timeline.png" alt="2010–2025 판막질환 가이드라인 핵심 변화와 AS·MR 무작위 임상시험 연대기"></a>
+      <figcaption>클릭하면 원본 크기. 세로 점선 = 가이드라인 발표 시점 (미국 파선, 유럽 점선). 버블 = 결과(초록 우월 · 파랑 비열등 · 회색 중립), 크기 ∝ 등록 환자 수.
+        시험 결과는 가이드라인 요약에서 수집했습니다. 한국 KSE는 등급 체계가 없어 이 그림에는 넣지 않았습니다.</figcaption></figure>
+  </section>
+
+  <section id="tables">
+    <h2>판별 권고 등급표</h2>
+    <p class="subtitle">색 = 권고 등급. 한 칸에 권고가 여럿이면 가장 높은 등급의 색. 미국의 1/2a/2b는 I/IIa/IIb로 표기를 통일했습니다(근거수준은 원문 그대로).</p>
+    <div class="legend">
+      <span class="key"><span class="sw cls-I"></span>I</span><span class="key"><span class="sw cls-IIa"></span>IIa</span>
+      <span class="key"><span class="sw cls-IIb"></span>IIb</span><span class="key"><span class="sw cls-none"></span>권고 없음</span>
+      <span class="key"><span class="sw cls-KR"></span>KSE (등급 없음)</span>
+    </div>
+    <div class="seg" id="tsw" style="margin-bottom:12px">
+      <button type="button" data-t="tavi" aria-pressed="true">SAVR vs TAVI</button>
+      <button type="button" data-t="mr" aria-pressed="false">MR: 수술 vs TEER</button>
+    </div>
+
+    <div id="t-tavi">
+      <p style="font-size:13.5px;margin:0 0 10px"><b>"TAVI for low risk"라고 쓴 가이드라인은 없습니다.</b> 저위험 환자는 결정 축이 수술 위험도에서 나이로 바뀌면서 TAVI 대상이 됐습니다.
+        초록이 2012년의 수술불가 칸에서 시작해 2020년부터 저위험 칸까지 번집니다. 위험도 칸의 색은 <b>TAVI에 준 등급</b>입니다.</p>
+      <div class="table-wrap"><table class="grid classed ed">
+        <thead><tr><th>판</th><th>결정 축</th><th>저위험</th><th>중위험</th><th>고위험</th><th>수술불가</th><th class="c">저위험 TAVI?</th><th>새 RCT</th></tr></thead>
+        <tbody>
+          <tr><td class="edn"><span class="lin eu">2012 ESC</span></td><td>Heart team + 점수 (EuroSCORE ≥20% / STS ≥10% "제안")</td><td class="cls-none">AVR I (B)</td><td class="cls-none">AVR · <b>"TAVI should not be performed — trials are required"</b></td><td class="cls-IIa">Heart team이 선호하면 TAVI IIa (B)</td><td class="cls-I">AVR 부적합: TAVI I (B)</td><td class="flag">✗</td><td>PARTNER 1B · 1A</td></tr>
+          <tr><td class="edn"><span class="lin us">2014 AHA/ACC</span></td><td>수술 위험도 (STS + 노쇠 + 장기 + 시술 장애)</td><td class="cls-none">SAVR I (A)</td><td class="cls-none">SAVR I (A)</td><td class="cls-IIa">SAVR 또는 TAVI IIa (B)</td><td class="cls-I">생존 &gt;12개월이면 TAVI I (B)</td><td class="flag">✗</td><td>PARTNER 1B · 1A</td></tr>
+          <tr><td class="edn"><span class="lin us">2017 AHA/ACC</span><small>focused update</small></td><td>수술 위험도</td><td class="cls-none">SAVR I (B-NR) · "TAVI not studied at low risk"</td><td class="cls-IIa">SAVR I (B-NR) · TAVI <b>IIa (B-R) 신설</b></td><td class="cls-I">SAVR 또는 TAVI IIa → I (A)</td><td class="cls-I">TAVI I (A)</td><td class="flag">✗</td><td>CoreValve US HR · PARTNER 2A</td></tr>
+          <tr><td class="edn"><span class="lin eu">2017 ESC</span></td><td>수술 위험 점수 (STS / EuroSCORE II 4%)</td><td class="cls-none">&lt;4%, 다른 위험요인 없음: SAVR I (B)</td><td class="cls-I" colspan="2">≥4% 또는 노쇠 등: Heart Team 결정, 고령 + TF 가능하면 TAVI 선호 I (B)</td><td class="cls-I">SAVR 부적합: TAVI I (B)</td><td class="flag">✗</td><td>PARTNER 2A · SURTAVI</td></tr>
+          <tr><td class="edn"><span class="lin us">2020 ACC/AHA</span></td><td>나이 + 기대여명 (위험도 구분 폐지)</td><td class="cls-I" colspan="2">&lt;65세 또는 기대여명 &gt;20년: SAVR I (A)<br>65–80세: SAVR 또는 TF-TAVI I (A)<br>&gt;80세 또는 기대여명 &lt;10년: TF-TAVI I (A)</td><td class="cls-I" colspan="2">고위험/수술불가: 생존 &gt;12개월이면 TAVI I (A)</td><td class="flag yes">✓ ≥65세</td><td><b>PARTNER 3 · Evolut Low Risk</b></td></tr>
+          <tr><td class="edn"><span class="lin eu">2021 ESC</span></td><td>75세 + 위험 점수</td><td class="cls-I" colspan="2">&lt;75세 + STS/EuroSCORE II &lt;4%: SAVR I (B)<br>≥75세: 위험도와 무관하게 TAVI I (A)<br>그 외: Heart Team I (B)</td><td class="cls-I" colspan="2">&gt;8% 또는 수술 부적합: TAVI I (A)</td><td class="flag yes">✓ ≥75세</td><td><b>PARTNER 3 · Evolut Low Risk</b></td></tr>
+          <tr><td class="edn"><span class="lin eu">2025 ESC</span></td><td>70세 (점수 기준 삭제, 평생 관리)</td><td class="cls-I" colspan="2">&lt;70세 + 저위험: SAVR I (B)<br>≥70세: 위험도와 무관하게 TAVI I (A)<br>그 외: Heart Team I (B)</td><td class="cls-I" colspan="2">Heart Team: SAVR 또는 TAVI I (B)<br>TF 부적합: 비경대퇴 TAVI IIa (B)</td><td class="flag yes">✓ ≥70세</td><td>DEDICATE · NOTION-2</td></tr>
+          <tr class="kse"><td class="edn"><span class="lin kr">2023 KSE</span><small>한국</small></td><td>75세 + STS PROM (ESC 2021 체계, 등급 없음)</td><td class="cls-KR" colspan="2">&lt;75세 + STS &lt;4%: SAVR 우선<br>≥75세: TAVR 우선<br>그 외: Heart Team</td><td class="cls-KR" colspan="2">STS ≥8% 또는 SAVR 부적합: TAVR 우선</td><td class="flag yes">✓ ≥75세</td><td>국내: <b>RECOVERY</b> (무증상 AS, Vmax ≥4.5)</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">2012 ESC 중위험 칸의 "should not be performed"는 본문 문장이며 Class III 권고가 아니므로 회색입니다.</p>
+    </div>
+
+    <div id="t-mr" hidden>
+      <p style="font-size:13.5px;margin:0 0 10px"><b>1차성 MR 수술은 모든 판에서 Class I였습니다.</b> TEER는 심실성 2차성 MR에서만 IIb → IIa → I (2025)로 올라갔고, 1차성 MR에서는 아직 고위험 환자의 IIa에 머물러 있습니다.</p>
+      <div class="table-wrap"><table class="grid classed ed">
+        <thead><tr><th>판</th><th>1차성 MR · 수술 (무증상 기준)</th><th class="teer">1차성 MR · TEER</th><th>심실성 SMR · 수술</th><th class="teer">심실성 SMR · TEER</th><th>심방성 SMR</th><th>새 RCT</th></tr></thead>
+        <tbody>
+          <tr><td class="edn"><span class="lin eu">2012 ESC</span></td><td class="cls-I">LVESD ≥45 또는 LVEF ≤60%: I (C)<br>새 AF 또는 SPAP &gt;50: IIa (C)<br>Flail + LVESD ≥40: IIa (C)</td><td class="cls-IIb">수술불가/고위험, 기대여명 &gt;1년: IIb (C)</td><td class="cls-I">CABG 시, LVEF &gt;30%: I (C)<br>CABG 시 중등도 MR: IIa (C)</td><td class="cls-IIb">수술불가/고위험, "무작위 연구로 확인 필요": IIb (C)</td><td class="cls-none">구분 없음</td><td>EVEREST II</td></tr>
+          <tr><td class="edn"><span class="lin us">2014 AHA/ACC</span></td><td class="cls-I">LVEF ≤60% 또는 LVESD ≥40: I<br>성형 &gt;95% 내구, 사망 &lt;1%: IIa</td><td class="cls-IIb">수술불가, NYHA III–IV: IIb (B)</td><td class="cls-IIa">CABG/AVR 시: IIa<br>단독, NYHA III–IV: IIb</td><td class="cls-none">—</td><td class="cls-none">구분 없음</td><td>EVEREST II · RIME</td></tr>
+          <tr><td class="edn"><span class="lin us">2017 AHA/ACC</span><small>focused update</small></td><td class="cls-I">LVEF ≤60% 또는 LVESD ≥40: I (2014)<br>+ 연속 영상에서 LV 변화: IIb (C-LD)</td><td class="cls-IIb">수술불가: IIb (2014 유지)</td><td class="cls-IIa">CABG/AVR 시: IIa (2014)<br>Chordal-sparing MVR &gt; 축소 판륜성형: IIa (B-R)<br>CABG 시 중등도: IIb (B-R)</td><td class="cls-none">— "no equivalent 2017 recommendation"</td><td class="cls-none">구분 없음</td><td>CTSN severe · CTSN moderate</td></tr>
+          <tr><td class="edn"><span class="lin eu">2017 ESC</span></td><td class="cls-I">LVESD ≥45 또는 LVEF ≤60%: I<br>LVESD 40–44 + flail/LA 확장: IIa</td><td class="cls-IIb">수술불가/고위험, 무익하지 않을 때: IIb</td><td class="cls-I">CABG 시, LVEF &gt;30%: I</td><td class="cls-IIb">LVEF &gt;30%, 적합한 해부학: IIb</td><td class="cls-none">구분 없음</td><td>—</td></tr>
+          <tr><td class="edn"><span class="lin us">2020 ACC/AHA</span></td><td class="cls-I">LVEF ≤60% 또는 LVESD ≥40: I (B-NR)<br>성형 &gt;95% 내구: IIa</td><td class="cls-IIa">고위험/수술불가, NYHA III–IV: IIa (B-NR)</td><td class="cls-IIa">CABG 시: IIa (B-NR)<br>단독, NYHA III–IV: IIb<br>Chordal-sparing MVR: IIb (B-R)</td><td class="cls-IIa">COAPT 기준 (LVEF 20–50, LVESD ≤70, PASP ≤70): <b>IIa (B-R) 신설</b></td><td class="cls-IIb">수술, NYHA III–IV: IIb</td><td><b>COAPT</b> · MITRA-FR</td></tr>
+          <tr><td class="edn"><span class="lin eu">2021 ESC</span></td><td class="cls-I">LVESD ≥40 또는 LVEF ≤60%: I<br>LVESD &lt;40 + LA 확장: IIa</td><td class="cls-IIb">수술불가/고위험: IIb (B)</td><td class="cls-I">CABG 또는 다른 수술 시: I (B) — LVEF &gt;30% 조건 삭제</td><td class="cls-IIa">반응 예측 기준 (LVEF 기준 대체): IIa (B)</td><td class="cls-none">구분 없음</td><td><b>COAPT</b> · MITRA-FR</td></tr>
+          <tr><td class="edn"><span class="lin eu">2025 ESC</span></td><td class="cls-I">LVESD ≥40, LVESDi ≥20 또는 LVEF ≤60%: I (B)<br>AF/SPAP &gt;50/LAVI ≥60/TR 중 ≥3개: <b>I (B) 신설</b></td><td class="cls-IIa">고위험: IIa (B)</td><td class="cls-I">CABG 시 중증: I (B)<br>CABG 시 중등도: IIb (B)</td><td class="cls-I"><b>Table 7 기준: I (A)</b></td><td class="cls-IIa">수술 + AF 절제 + LAAO: IIa<br>수술 부적합 시 TEER: IIb</td><td><b>RESHAPE-HF2</b> · MATTERHORN</td></tr>
+          <tr class="kse"><td class="edn"><span class="lin kr">2023 KSE</span><small>한국</small></td><td class="cls-KR">LVEF ≤60%, LVESD ≥40, MR 관련 AF, PASP &gt;50, LA ≥60 mL/m² 또는 ≥55 mm (ESC 2021 목록, 등급 없음)</td><td class="cls-KR">증상 + 고위험 + 해부학 적합 · MFDS 2019 승인</td><td class="cls-KR">CABG 시 "reasonable" · 중증 기준은 1차성과 같은 EROA ≥0.4 cm²</td><td class="cls-KR">COAPT 기준: "reasonable"</td><td class="cls-KR">판륜성형 + AF 절제 "can be beneficial"</td><td><b>RCT 없음</b> · 국내 TEER 연구 MR ≤2+ 94%</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">2017 AHA/ACC 행은 바뀐 권고와 함께 2014년에서 유지된 권고를 "(2014)"로 표시했습니다. 2014 AHA/ACC와 2017 ESC의 등급 일부는 원문 대조가 필요합니다.</p>
+    </div>
+  </section>
+
+  <section id="baseline">
+    <h2>출발선 — 2012 ESC/EACTS</h2>
+    <p class="subtitle">첫 ESC/EACTS 공동 판이자 TAVI와 경피적 edge-to-edge 시술이 처음 들어간 유럽 가이드라인. PARTNER 1B·1A, EVEREST II 직후, 중위험 시험 이전.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>질문</th><th><span class="lin eu">2012 ESC</span></th><th>이후</th></tr></thead>
+      <tbody>
+        <tr><td>무증상 중증 AS</td><td>"매우 중증 AS에서도 조기 AVR을 일반적으로 권할 근거 부족" · Vmax &gt;5.5: IIa (C)</td><td>Vmax ≥5 (2021) → 표지자 없이 IIa (A) (2025)</td></tr>
+        <tr><td>2차성 MR 중증 기준</td><td><b>EROA ≥20 mm², RVol ≥30 mL</b></td><td>≥40 / ≥60 (2021) → ≥30 / ≥45 (2025) — <b>왕복</b></td></tr>
+        <tr><td>좌심 수술 시 경도·중등도 TR + 판륜 ≥40 mm</td><td>IIa (C)</td><td>2017·2021 유지 → <b>2025년 IIb로 하향</b></td></tr>
+        <tr><td>기계판막 vs 조직판막 나이</td><td>기계 &lt;60/&lt;65 · 조직 &gt;65/&gt;70 (IIa C)</td><td><b>2025년과 같은 숫자</b> — 13년간 그대로</td></tr>
+        <tr><td>TAVI 후 이중 항혈소판</td><td>"근거 없이" 관행적으로 사용, 등급 없음</td><td>III (B) (2025, POPular TAVI)</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="sources">
+    <h2>출처</h2>
+    <p class="src">2012 ESC/EACTS (Eur Heart J 2012;33:2451) · 2014 AHA/ACC (JACC 2014;63:e57) · 2017 AHA/ACC focused update (Circulation 2017;135:e1159) · 2017 ESC/EACTS (Eur Heart J 2017;38:2739) ·
+      2020 ACC/AHA · 2021 ESC/EACTS (Eur Heart J 2022;43:561) · 2025 ESC/EACTS · 2023 KSE. 시험 결과와 연도는 가이드라인 요약 기준이며 원 논문 확인이 필요합니다.</p>
+  </section>
+  <footer>최종 업데이트 2026-10-09</footer>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+document.querySelectorAll('#tsw button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('#tsw button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', 'true');
+    var t = b.getAttribute('data-t');
+    document.getElementById('t-tavi').hidden = t !== 'tavi';
+    document.getElementById('t-mr').hidden = t !== 'mr';
+  });
+});
+</script>
+</body>
+</html>

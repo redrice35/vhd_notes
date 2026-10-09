@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>최신 판막질환 가이드라인 — 미국·유럽·한국</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="home" href="index.html">← 노트 홈</a>
+  <h1>판막질환 · 최신 가이드라인</h1>
+  <nav class="tabs">
+    <a href="vhd.html">개요</a>
+    <a href="aortic-stenosis.html">AS</a>
+    <a href="mitral-regurgitation.html">MR</a>
+    <a href="guidelines.html" aria-current="page">최신 가이드라인</a>
+    <a href="guideline-history.html">가이드라인 변천</a>
+    <a href="korea-reimbursement.html">한국 급여</a>
+  </nav>
+  <button id="themeToggle" type="button">🌙 다크모드</button>
+</header>
+
+<main>
+  <h2 class="page">현재 쓰이는 세 문서</h2>
+  <p class="lede">미국과 유럽의 차이 대부분은 의견이 아니라 <b>발표 날짜</b>의 차이입니다. 2020 ACC/AHA는 무증상 AS RCT, 2세대 TEER RCT, 삼첨판 시술 문헌이 모두 나오기 전에 쓰였습니다.
+    한국 KSE는 2020/2021 문서를 읽고 사안마다 한쪽을 택한 문서입니다.</p>
+
+  <section id="docs">
+    <h2>세 문서</h2>
+    <div class="cards">
+      <div class="tile"><div class="k"><span class="lin us">미국</span></div><h3>2020 ACC/AHA</h3>
+        <p>Otto CM, Nishimura RA (chairs). <i>Circulation</i> 2021;143:e72–e227. 2014판과 2017 focused update를 대체.</p>
+        <p><b>특징</b> — Stage A–D 병기 체계, 1/2a/2b/3(No Benefit · Harm) 등급, 근거수준 B-R/B-NR/C-LD/C-EO. 문헌 검색은 2020년 3월에 마감.</p></div>
+      <div class="tile"><div class="k"><span class="lin eu">유럽</span></div><h3>2025 ESC/EACTS</h3>
+        <p>Praz F, Borger MA (chairs). <i>Eur Heart J</i> 2025. 2012 → 2017 → 2021 → 2025로 이어지는 네 번째 공동 판.</p>
+        <p><b>특징</b> — 병기 없음. 평생 관리(lifetime management), 심방성 2차성 MR의 독립, TRI-SCORE, 성별 섹션. 2025년 신설·변경 권고 40여 개.</p></div>
+      <div class="tile"><div class="k"><span class="lin kr">한국</span></div><h3>2023 KSE position paper</h3>
+        <p>대한심장초음파학회. Part I 대동맥판 · Part II 승모판·삼첨판. <i>J Cardiovasc Imaging</i> 2024;32:11, 32:10.</p>
+        <p><b>특징</b> — <b>등급 없음</b>(서술형 + 알고리즘), 급여 기준 없음. 국내 자료(RECOVERY, 한국 판막질환 레지스트리, 국내 진료 설문)를 근거로 일부 기준을 조정.</p></div>
+    </div>
+  </section>
+
+  <section id="diverge">
+    <h2>세 기준이 다른 답을 내는 질문</h2>
+    <p class="subtitle">필터로 판막을 고르세요. "날짜" 표시는 유럽 권고의 근거가 된 시험이 2020 ACC/AHA 이후에 나온 경우입니다.</p>
+    <div class="seg" id="filter" style="margin-bottom:12px">
+      <button type="button" data-f="all" aria-pressed="true">전체</button>
+      <button type="button" data-f="AS">대동맥판 협착</button>
+      <button type="button" data-f="AR">대동맥판 역류</button>
+      <button type="button" data-f="MR">승모판</button>
+      <button type="button" data-f="TR">삼첨판</button>
+      <button type="button" data-f="PV">인공판막·항혈전</button>
+    </div>
+    <div class="table-wrap"><table id="dtab">
+      <thead><tr><th style="width:24%">질문</th><th><span class="lin us">ACC/AHA 2020</span></th><th><span class="lin eu">ESC 2025</span></th><th><span class="lin kr">KSE 2023</span></th><th>왜 다른가</th></tr></thead>
+      <tbody>
+        <tr data-v="AS"><td><b>무증상 중증 AS, 표지자 없음</b></td><td>권고 없음 (모든 무증상 권고에 표지자 필요)</td><td><b>IIa (A)</b> — 경과 관찰의 대안</td><td>경과 관찰</td><td>날짜 — EARLY TAVR 2024</td></tr>
+        <tr data-v="AS"><td>무증상 AS의 "매우 중증"</td><td>Vmax ≥5 m/s</td><td>MG ≥60 또는 Vmax &gt;5</td><td><b>Vmax ≥4.5</b></td><td>한국: RECOVERY(국내 RCT) 근거</td></tr>
+        <tr data-v="AS"><td>SAVR/TAVI 나이 기준</td><td>&lt;65 / 65–80 / &gt;80 + 기대여명</td><td><b>70세</b> 단일 기준</td><td><b>75세</b> + STS 4%/8%</td><td>KSE는 ESC 2021 체계, ESC는 2025에 70으로</td></tr>
+        <tr data-v="AS"><td>운동 중 혈압 하강 기준</td><td>≥10 mmHg</td><td>&gt;20 mmHg (지속)</td><td>"운동 불내성"</td><td>같은 검사, 다른 기준</td></tr>
+        <tr data-v="AR"><td>AR 수술의 LVEF 기준</td><td>≤55% (I)</td><td>≤50% (I), ≤55%는 IIb</td><td>≤50% (알고리즘)</td><td>ACC/AHA가 더 높은 EF에서 개입</td></tr>
+        <tr data-v="AR"><td>AR에 TAVI</td><td>수술 후보에서 <b>III: Harm</b></td><td>IIb (B) — 수술 부적합 시</td><td>언급 없음</td><td>대상군이 다름 + 전용 기기 이후</td></tr>
+        <tr data-v="MR"><td><b>2차성 MR의 중증 기준</b></td><td>EROA ≥0.40 cm², RVol ≥60 (유지)</td><td><b>≥30 mm², ≥45 mL</b> (낮춤)</td><td>≥0.40 cm², ≥60 (ACC 쪽)</td><td>같은 물리, 반대의 대응</td></tr>
+        <tr data-v="MR"><td>심실성 2차성 MR의 TEER</td><td>IIa (B-R)</td><td><b>I (A)</b></td><td>reasonable</td><td>날짜 — RESHAPE-HF2, MATTERHORN 2024</td></tr>
+        <tr data-v="MR"><td>무증상 1차성 MR, LV 정상</td><td>IIa — 성형 성공 &gt;95%, 사망 &lt;1%</td><td><b>I</b> — 표지자 3개 이상</td><td>표지자 각각 단독 기준</td><td>ESC가 훨씬 적극적</td></tr>
+        <tr data-v="MR"><td>심방성 2차성 MR</td><td>IIb 수술 권고 1개</td><td><b>독립 질환 + 진단 기준</b>, 수술 IIa</td><td>판륜성형 + AF 절제 "beneficial"</td><td>ESC 2025의 개념적 진전</td></tr>
+        <tr data-v="TR"><td>경피적 TR 치료</td><td><b>권고 없음</b></td><td><b>IIa (A)</b></td><td>국내 미도입</td><td>날짜 — TRILUMINATE, Tri.Fr, TRISCEND II</td></tr>
+        <tr data-v="TR"><td>좌심 수술 시 경도 TR + 판륜 확장</td><td>2a (판륜 &gt;4.0 cm)</td><td><b>IIb</b> (하향 — 박동기 위해)</td><td>reasonable</td><td><b>진짜로 반대 방향</b> — ESC가 더 최신·더 보수적</td></tr>
+        <tr data-v="TR"><td>무증상 중증 2차성 TR + RV 확장</td><td>권고 없음</td><td>IIa</td><td>수술 (ESC 쪽)</td><td>KSE가 ESC를 택함</td></tr>
+        <tr data-v="PV"><td>TAVI 후 이중 항혈소판</td><td>IIb (3–6개월, 저출혈위험)</td><td><b>III (B)</b></td><td>—</td><td>날짜 — POPular TAVI</td></tr>
+        <tr data-v="PV"><td>기계판막 vs 조직판막 나이</td><td>기계 &lt;50 · 개별화 50–65 · 조직 &gt;65 (대동맥)</td><td>기계 &lt;60/&lt;65 · 조직 &gt;65/&gt;70 (대동맥/승모)</td><td>나이 기준 없음</td><td>ESC 기준은 2012년부터 그대로</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="kse">
+    <h2>KSE는 어느 쪽을 택했나</h2>
+    <p class="subtitle">KSE는 제3의 계보가 아니라 2020 ACC/AHA와 2021 ESC 사이의 선택입니다. 하나는 스스로 기준을 낮췄습니다.</p>
+    <div class="table-wrap"><table class="grid classed">
+      <thead><tr><th>사안</th><th>KSE의 선택</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>SAVR/TAVR 나이</td><td>75세 + STS 4%/8%</td><td class="cls-none"><span class="lin eu">ESC 2021</span> 쪽</td></tr>
+        <tr><td>무증상 중증 2차성 TR + RV 확장 시 수술</td><td>알고리즘에 포함</td><td class="cls-none"><span class="lin eu">ESC</span> 쪽</td></tr>
+        <tr><td>2차성 MR 중증 기준</td><td>EROA ≥0.4 cm² (1차성과 동일)</td><td class="cls-none"><span class="lin us">ACC/AHA</span> 쪽</td></tr>
+        <tr><td>병기 체계</td><td>Stage A–D 표 사용</td><td class="cls-none"><span class="lin us">ACC/AHA</span> 쪽</td></tr>
+        <tr><td><b>무증상 AS의 Vmax 기준</b></td><td><b>4.5 m/s</b> — 두 지침의 5.0보다 낮음</td><td class="cls-KR"><span class="lin kr">KSE 고유</span></td></tr>
+        <tr><td><b>중증 MS 정의</b></td><td>MVA ≤1.5 cm² 재확인 — 국내 기관의 62%가 아직 1.0 사용</td><td class="cls-KR"><span class="lin kr">국내 진료 교정</span></td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="method">
+    <h2>숫자는 어디서 오나</h2>
+    <p class="subtitle">어느 가이드라인도 중증도 기준을 직접 만들지 않습니다. 둘이 같은 숫자를 쓰면 같은 ASE/EACVI 문서를 물려받았기 때문입니다.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>층</th><th>문서</th><th>누가 물려받나</th></tr></thead>
+      <tbody>
+        <tr><td>역류</td><td>Zoghbi et al., ASE/SCMR 2017</td><td>2021 ESC는 명시적으로, ACC/AHA는 ASE 공동 승인으로</td></tr>
+        <tr><td>협착</td><td>Baumgartner et al., EAE/ASE 2009</td><td>단, MS는 ASE가 2014 AHA/ACC 병기를 대신 승인</td></tr>
+        <tr><td>인공판막</td><td>Zoghbi &amp; Jone, ASE 2024</td><td>2025 ESC Table 12 = ASE 2024 Table 6</td></tr>
+        <tr><td>시술 중 TEE</td><td>Hahn &amp; Saric, ASE 2022</td><td>두 지침 TEER 권고의 "적합한 해부학"</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="sources">
+    <h2>출처</h2>
+    <p class="src">등급과 근거수준은 두 단 PDF에서 재구성했고 두 번째 위치에서 교차 확인했습니다. 확인되지 않은 값은 넣지 않았습니다. 임상 문서에 인용하기 전 원문을 확인하십시오.</p>
+  </section>
+  <footer>최종 업데이트 2026-10-09</footer>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+document.querySelectorAll('#filter button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    document.querySelectorAll('#filter button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+    b.setAttribute('aria-pressed', 'true');
+    var f = b.getAttribute('data-f');
+    document.querySelectorAll('#dtab tbody tr').forEach(function (tr) { tr.hidden = f !== 'all' && tr.getAttribute('data-v') !== f; });
+  });
+});
+</script>
+</body>
+</html>

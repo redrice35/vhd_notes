@@ -1,0 +1,16 @@
+# Netlify site configuration
+# Static site: no build step, publish the repository root as-is.
+# Ignored by GitHub Pages, so this file is safe to keep in the same repo.
+
+[build]
+  publish = "."
+
+# Block search-engine indexing at the HTTP-header level.
+# This is the strongest of the three layers in use:
+#   1. <meta name="robots" content="noindex, nofollow"> in each page
+#   2. robots.txt at the site root (works on Netlify; ignored on GitHub project pages)
+#   3. X-Robots-Tag header below
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

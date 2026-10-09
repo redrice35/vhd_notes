@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>승모판 역류증 — 미국·유럽·한국 기준 비교</title>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="home" href="index.html">← 노트 홈</a>
+  <h1>판막질환 · 승모판 역류</h1>
+  <nav class="tabs">
+    <a href="vhd.html">개요</a>
+    <a href="aortic-stenosis.html">AS</a>
+    <a href="mitral-regurgitation.html" aria-current="page">MR</a>
+    <a href="guidelines.html">최신 가이드라인</a>
+    <a href="guideline-history.html">가이드라인 변천</a>
+    <a href="korea-reimbursement.html">한국 급여</a>
+  </nav>
+  <button id="themeToggle" type="button">🌙 다크모드</button>
+</header>
+
+<main>
+  <h2 class="page">Mitral Regurgitation</h2>
+  <p class="lede">MR에서 수술과 시술 사이의 선은 나이가 아니라 <b>원인</b>으로 그어집니다. 1차성 MR은 수술이 표준이고 TEER는 고위험 환자의 대안이며,
+    심실성 2차성 MR에서는 TEER가 약물치료 위에 얹는 치료로 Class I까지 올라왔습니다.</p>
+  <div class="disclaimer">결정 도구는 가이드라인 권고 문장을 단순화한 학습용 도구입니다. 2차성 MR은 반드시 GDMT 최적화 후 euvolaemic 상태에서 재평가해야 하며, TEER 적합성은 TEE로 판단합니다.</div>
+
+  <section id="tool">
+    <h2>결정 도구 — 세 기준의 권고를 나란히</h2>
+    <p class="subtitle">원인을 먼저 고르면 그에 맞는 입력 항목이 나타납니다.</p>
+    <div class="tool">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px">
+        <span style="font-size:12px;color:var(--text-secondary);font-weight:600">사례</span>
+        <div class="seg" id="presets">
+          <button type="button" data-p="m1">1차성 · 무증상 · 표지자 3개</button>
+          <button type="button" data-p="m2">심실성 SMR · COAPT형</button>
+          <button type="button" data-p="m3">1차성 · 증상 · 고위험</button>
+          <button type="button" data-p="m4">심방성 SMR</button>
+        </div>
+      </div>
+
+      <fieldset><legend>1 · 원인과 중증도</legend>
+        <div class="tool-grid">
+          <div class="field"><label for="et">MR 원인</label>
+            <select id="et">
+              <option value="pmr">1차성 (퇴행성·탈출증)</option>
+              <option value="vsmr">2차성 — 심실성 (LV 기능저하·허혈성)</option>
+              <option value="asmr">2차성 — 심방성 (AF·HFpEF, 판륜 확장)</option>
+            </select></div>
+          <div class="field"><label for="sev">중증도</label>
+            <select id="sev"><option value="severe">중증</option><option value="moderate">중등도</option></select></div>
+          <div class="field"><label for="nyha">증상 (NYHA)</label>
+            <select id="nyha"><option value="1">I — 무증상</option><option value="2">II</option><option value="3">III–IV</option></select></div>
+          <div class="field"><label for="lvef">LVEF (%)</label><input id="lvef" type="number" min="10" max="80"></div>
+          <div class="field"><label for="lvesd">LVESD (mm)</label><input id="lvesd" type="number" min="20" max="90"></div>
+          <div class="field"><label for="spap">수축기 폐동맥압 SPAP (mmHg)</label><input id="spap" type="number" min="15" max="110"></div>
+          <div class="field cond" data-show="et=pmr"><label for="lavi">LA 용적지수 LAVI (mL/m²)</label><input id="lavi" type="number" min="15" max="200"></div>
+          <div class="field cond" data-show="et=pmr"><label for="lvesdi">LVESDi (mm/m²)</label><input id="lvesdi" type="number" min="10" max="50" step="0.5">
+            <div class="hint">ESC 2025만 사용 (≥20)</div></div>
+        </div>
+        <div class="checks cond" data-show="et=pmr" style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <label><input type="checkbox" id="af"> MR로 인한 심방세동</label>
+          <label><input type="checkbox" id="tr"> 중등도 이상 2차성 TR 동반</label>
+          <label><input type="checkbox" id="repair"> 내구성 있는 성형술 가능성 높음 (경험 많은 센터)</label>
+          <label><input type="checkbox" id="lvdecl"> 연속 영상에서 LV 크기 증가·EF 감소</label>
+        </div>
+        <div class="checks cond" data-show="et=vsmr" style="margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <label><input type="checkbox" id="gdmt"> GDMT 최적화 (±CRT) 후에도 중증 MR 지속</label>
+          <label><input type="checkbox" id="hfh"> 지난 1년 심부전 입원 또는 BNP ≥300 / NT-proBNP ≥1000</label>
+          <label><input type="checkbox" id="cad"> 재관류가 필요한 관상동맥질환</label>
+          <label><input type="checkbox" id="rv"> 중증 우심실 기능부전</label>
+          <label><input type="checkbox" id="stageD"> 진행성 심부전 (Stage D)</label>
+        </div>
+        <div class="checks cond" data-show="et=asmr" style="margin-top:12px">
+          <label><input type="checkbox" id="omt"> 심부전·AF 치료(리듬 조절 포함) 최적화 후에도 증상 지속</label>
+        </div>
+      </fieldset>
+
+      <fieldset><legend>2 · 중재 방법을 정하는 요소</legend>
+        <div class="tool-grid">
+          <div class="field"><label for="risk">수술 위험도</label>
+            <select id="risk"><option value="low">낮음 (수술 가능)</option><option value="high">높음</option><option value="prohib">수술 불가 (prohibitive)</option></select></div>
+          <div class="field"><span class="lab">기타</span>
+            <div class="checks">
+              <label><input type="checkbox" id="anat"> TEER에 적합한 해부학 (TEE)</label>
+              <label><input type="checkbox" id="cabg"> CABG 예정</label>
+              <label><input type="checkbox" id="le1"> 기대여명 &lt;1년</label>
+            </div></div>
+        </div>
+      </fieldset>
+
+      <div class="verdicts" id="verdicts"></div>
+      <div class="diffbox" id="diff"></div>
+    </div>
+  </section>
+
+  <section id="severity">
+    <h2>"중증"의 정의부터 다르다 — 2차성 MR</h2>
+    <p class="subtitle">2D PISA가 2차성 MR의 초승달 모양 역류구를 과소평가한다는 물리는 같지만, 대응은 정반대입니다. 값을 넣어 보세요.</p>
+    <div class="tool">
+      <div class="tool-grid">
+        <div class="field"><label for="s_et">원인</label><select id="s_et"><option value="sec">2차성</option><option value="prim">1차성</option></select></div>
+        <div class="field"><label for="s_eroa">EROA (mm²)</label><input id="s_eroa" type="number" value="33" min="5" max="120"></div>
+        <div class="field"><label for="s_rvol">역류량 RVol (mL)</label><input id="s_rvol" type="number" value="48" min="5" max="150"></div>
+      </div>
+      <div class="table-wrap" style="margin-top:14px"><table class="grid classed">
+        <thead><tr><th>기준</th><th>중증 기준값</th><th>이 환자</th></tr></thead>
+        <tbody id="sevtab"></tbody>
+      </table></div>
+      <p class="note">ESC의 2차성 MR 기준은 <b>20 → 40 → 30 mm²</b>로 왕복했습니다(2012 / 2021 / 2025). "ESC 기준"을 인용할 때는 판 연도를 붙여야 합니다.
+        KSE는 ACC/AHA 쪽(1차성과 같은 0.4 cm²)을 택했습니다.</p>
+    </div>
+  </section>
+
+  <section id="indications">
+    <h2>권고 비교</h2>
+    <div class="legend">
+      <span class="key"><span class="sw cls-I"></span>I</span><span class="key"><span class="sw cls-IIa"></span>IIa</span>
+      <span class="key"><span class="sw cls-IIb"></span>IIb</span><span class="key"><span class="sw cls-none"></span>권고 없음</span>
+      <span class="key"><span class="sw cls-KR"></span>KSE (등급 없음)</span>
+    </div>
+    <h3>1차성 MR</h3>
+    <div class="table-wrap"><table class="grid classed">
+      <thead><tr><th style="width:30%">상황</th><th><span class="lin us">ACC/AHA 2020</span></th><th><span class="lin eu">ESC 2025</span></th><th><span class="lin kr">KSE 2023</span></th></tr></thead>
+      <tbody>
+        <tr><td>증상 있는 중증</td><td class="cls-I">수술 I (B-NR) — LV 기능과 무관</td><td class="cls-I">수술 I (B)</td><td class="cls-KR">수술</td></tr>
+        <tr><td>무증상 + LV 기능저하</td><td class="cls-I">I (B-NR) — LVEF ≤60% 또는 LVESD ≥40</td><td class="cls-I">I (B) — + LVESDi ≥20</td><td class="cls-KR">수술</td></tr>
+        <tr><td><b>무증상, LV 정상, 표지자 3개 이상</b><br><span class="src">AF · SPAP &gt;50 · LA 확장 · TR ≥중등도</span></td><td class="cls-none">해당 권고 없음</td><td class="cls-I"><b>I (B) — 2025 신설</b></td><td class="cls-KR">수술 (각 표지자가 단독 기준)</td></tr>
+        <tr><td>무증상 + AF 또는 SPAP &gt;50</td><td class="cls-none">—</td><td class="cls-IIa">IIa (B)</td><td class="cls-KR">수술</td></tr>
+        <tr><td>무증상, 내구성 있는 성형 가능</td><td class="cls-IIa">IIa (B-NR) — 성공 &gt;95%, 사망 &lt;1%</td><td class="cls-IIa">IIa (B) — LA 확장 동반 시</td><td class="cls-KR">저위험이면 수술</td></tr>
+        <tr><td>TEER</td><td class="cls-IIa">IIa (B-NR) — NYHA III–IV, 고위험/수술불가, 기대여명 ≥1년</td><td class="cls-IIa">IIa (B) — 고위험</td><td class="cls-KR">증상 + 고위험 + 해부학 적합</td></tr>
+      </tbody>
+    </table></div>
+    <h3>2차성 MR</h3>
+    <div class="table-wrap"><table class="grid classed">
+      <thead><tr><th style="width:30%">상황</th><th><span class="lin us">ACC/AHA 2020</span></th><th><span class="lin eu">ESC 2025</span></th><th><span class="lin kr">KSE 2023</span></th></tr></thead>
+      <tbody>
+        <tr><td><b>심실성 — TEER</b></td><td class="cls-IIa">IIa (B-R) — LVEF 20–50, LVESD ≤70, PASP ≤70</td><td class="cls-I"><b>I (A)</b> — Table 7 기준 충족</td><td class="cls-KR">reasonable — COAPT 기준</td></tr>
+        <tr><td>심실성 — TEER, 기준 미충족</td><td class="cls-none">—</td><td class="cls-IIb">IIb (B) — LVAD/이식 평가 후</td><td class="cls-KR">MV 수술 또는 이식/LVAD</td></tr>
+        <tr><td>심실성 — CABG 시 중증 MR</td><td class="cls-IIa">IIa (B-NR)</td><td class="cls-I">I (B)</td><td class="cls-KR">reasonable</td></tr>
+        <tr><td>심실성 — 단독 수술</td><td class="cls-IIb">IIb (B-NR) — NYHA III–IV</td><td class="cls-IIb">IIb (C) — TEER 부적합 시</td><td class="cls-KR">LVEF ≥50% 또는 TEER 기준 미충족 시</td></tr>
+        <tr><td>심실성 + 단순 CAD — PCI 후 TEER</td><td class="cls-none">—</td><td class="cls-IIb">IIb (C)</td><td class="cls-none">—</td></tr>
+        <tr><td><b>심방성 — 수술</b></td><td class="cls-IIb">IIb (B-NR)</td><td class="cls-IIa">IIa (B) — + AF 절제 + LAAO</td><td class="cls-KR">판륜성형 + AF 절제 "can be beneficial"</td></tr>
+        <tr><td>심방성 — TEER</td><td class="cls-none">—</td><td class="cls-IIb">IIb (B) — 수술 부적합 시</td><td class="cls-none">—</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section id="table7">
+    <h2>ESC 2025 Table 7 — Class I TEER의 조건</h2>
+    <p class="subtitle">COAPT와 MITRA-FR의 차이를 "어느 시험이 옳은가"가 아니라 <b>COAPT 반응군의 표현형</b>으로 정리한 목록입니다. 앞의 네 항목과 SPAP는 ACC/AHA·KSE도 쓰는 COAPT 등록 기준입니다.</p>
+    <div class="card"><div class="table-wrap"><table>
+      <tbody>
+        <tr><td>TEER에 적합한 해부학</td><td>NYHA ≥II</td><td>LVEF 20–50%</td><td>LVESD ≤70 mm</td></tr>
+        <tr><td>SPAP ≤70 mmHg</td><td>1년 내 심부전 입원 또는 BNP ≥300 / NT-proBNP ≥1000</td><td>중증 RV 기능부전 없음</td><td>Stage D 아님</td></tr>
+        <tr><td>재관류가 필요한 CAD 없음</td><td>중증 AV·TV 질환 없음</td><td>비후성·제한성·침윤성 심근병증 없음</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">COAPT 기기군도 5년 사망 또는 심부전 입원 누적 발생률이 73.6%였습니다. 시술은 경과의 기울기를 바꾸지만 질환을 바꾸지는 않습니다.</p></div>
+  </section>
+
+  <section id="evidence">
+    <h2>근거 — 무작위 임상시험의 지형</h2>
+    <p class="subtitle">A: 원인별 TEER 시험 · B: 그 아래의 수술 근거 · C: 2025 ESC 권고별 완료된 전용 RCT 수</p>
+    <figure class="fig"><img src="img/mteer-rct-landscape.png" alt="승모판 역류 무작위 임상시험: 원인별, 수술 근거, 2025 ESC 권고 감사" loading="lazy">
+      <figcaption>가이드라인 요약에서 수집한 자료이며 원 논문에서 직접 추출하지 않았습니다.</figcaption></figure>
+    <h3>진행 중 — 1차성 MR에서 TEER vs 수술 (ClinicalTrials.gov, 2026-10-09)</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th>MITRA-HR</th><th>REPAIR MR</th><th>PRIMARY</th></tr></thead>
+      <tbody>
+        <tr><td>수술 위험도</td><td><b>고위험</b></td><td><b>중위험</b> (≥75세 또는 STS ≥2%)</td><td><b>전 위험도</b>, ≥60세 퇴행성 MR</td></tr>
+        <tr><td>비교</td><td>MitraClip vs 수술</td><td>MitraClip vs 성형술</td><td>TEER vs 성형술</td></tr>
+        <tr><td>n</td><td>330 (예정)</td><td>500 (예정)</td><td>450 (등록 완료)</td></tr>
+        <tr><td>1차 완료 예정</td><td><b>2026년 12월</b></td><td>2027년 12월</td><td>2029년 6월</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">고위험 → 중위험 → 전 위험도: TAVI가 2011–2019년에 PARTNER 1A → 2A → 3로 밟은 순서를 MR이 약 10년 늦게 밟고 있습니다.</p>
+    <p class="note"><b>한국</b> — 식약처(MFDS)는 2019년 퇴행성 MR에 대해 mitral TEER를 승인했고, 초기 국내 성적은 MR ≤2+ 94%, 30일 사망 6%였습니다.
+      국내 레지스트리에서 2차성 MR은 비허혈성이 63%로 서구 자료보다 허혈성 비율이 낮습니다.</p>
+  </section>
+
+  <section id="sources">
+    <h2>출처</h2>
+    <p class="src">2020 ACC/AHA · 2025 ESC/EACTS (Recommendation Tables 6–7, Table 7) · 2023 KSE position paper Part II: mitral and tricuspid valve disease (J Cardiovasc Imaging 2024;32:10) ·
+      ClinicalTrials.gov NCT03271762, NCT04198870, NCT05051033. 판별 등급표는 <a href="guideline-history.html">가이드라인 변천</a>에.</p>
+  </section>
+  <footer>최종 업데이트 2026-10-09</footer>
+</main>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var IDS = ['et','sev','nyha','lvef','lvesd','spap','lavi','lvesdi','af','tr','repair','lvdecl','gdmt','hfh','cad','rv','stageD','omt','risk','anat','cabg','le1'];
+  var BASE = { et:'pmr', sev:'severe', nyha:'1', lvef:62, lvesd:36, spap:35, lavi:45, lvesdi:18, af:false, tr:false, repair:true, lvdecl:false,
+               gdmt:true, hfh:false, cad:false, rv:false, stageD:false, omt:true, risk:'low', anat:true, cabg:false, le1:false };
+  function P(o) { var r = {}; for (var k in BASE) r[k] = BASE[k]; for (k in o) r[k] = o[k]; return r; }
+  var PRESETS = {
+    m1: P({ et:'pmr', nyha:'1', lvef:64, lvesd:37, spap:55, lavi:66, af:true, tr:true, repair:true }),
+    m2: P({ et:'vsmr', nyha:'3', lvef:32, lvesd:58, spap:48, gdmt:true, hfh:true, anat:true, risk:'high' }),
+    m3: P({ et:'pmr', nyha:'3', lvef:58, lvesd:41, spap:52, lavi:70, risk:'high', anat:true, repair:false }),
+    m4: P({ et:'asmr', nyha:'3', lvef:60, lvesd:34, spap:45, omt:true, risk:'low', anat:true })
+  };
+  function load(p) { IDS.forEach(function (k) { var el = $(k); if (el.type === 'checkbox') el.checked = !!p[k]; else el.value = p[k]; }); }
+  function read() {
+    var s = {};
+    IDS.forEach(function (k) { var el = $(k); s[k] = el.type === 'checkbox' ? el.checked : (el.type === 'number' ? parseFloat(el.value) : el.value); });
+    s.sym = s.nyha !== '1'; s.nyha3 = s.nyha === '3';
+    s.severe = s.sev === 'severe';
+    s.ladil = s.lavi >= 60;
+    s.lowRisk = s.risk === 'low';
+    s.coapt = s.lvef >= 20 && s.lvef <= 50 && s.lvesd <= 70 && s.spap <= 70;
+    return s;
+  }
+  function rec(cls, lvl, txt, why) { return { cls: cls, lvl: lvl, txt: txt, why: why || '' }; }
+  var NONE = function (t, w) { return rec('—', '', t, w); };
+
+  /* ------------------------------------------------ ACC/AHA 2020 */
+  function acc(s) {
+    var o = [];
+    if (!s.severe) {
+      if (s.et === 'vsmr' && s.cabg) return [NONE('중등도 MR + CABG — 2020 지침 요약에 등급 권고 없음', '2017 업데이트는 IIb (B-R)')];
+      return [NONE('중등도 MR — 중재 적응증 없음, 1–2년마다 심초음파')];
+    }
+    if (s.et === 'pmr') {
+      if (s.sym) {
+        if (s.lowRisk) o.push(rec('I', 'B-NR', '<b>MV 수술</b> — 증상 있는 중증 1차성 MR, LV 기능과 무관', '퇴행성이면 치환보다 성형 I (B-NR)'));
+        else if (s.nyha3 && s.anat && !s.le1) o.push(rec('IIa', 'B-NR', '<b>TEER</b> — NYHA III–IV, 고위험/수술불가, 해부학 적합', '기대여명 ≥1년'));
+        else if (s.risk === 'high') o.push(rec('I', 'B-NR', '<b>MV 수술</b> — 증상 있는 중증 MR', 'TEER(IIa)는 NYHA III–IV + 적합한 해부학에서'));
+        else o.push(NONE('수술 불가 + TEER 조건 미충족 — 약물치료, Heart Team'));
+      } else {
+        if (s.lvef <= 60 || s.lvesd >= 40) o.push(rec('I', 'B-NR', '<b>MV 수술</b> — 무증상 + LVEF ≤60% 또는 LVESD ≥40 mm (C2)'));
+        else if (s.repair && s.lowRisk) o.push(rec('IIa', 'B-NR', '<b>MV 성형</b> — 성공 >95%, 사망 <1% 예상 (밸브 센터)', 'AF·SPAP·LA 크기는 ACC/AHA에서 단독 기준이 아님'));
+        else if (s.lvdecl) o.push(rec('IIb', 'C-LD', 'MV 수술 고려 — 연속 영상에서 LV 크기 증가 또는 EF 감소'));
+        else o.push(NONE('적응증 없음 — 6–12개월마다 심초음파'));
+      }
+    } else if (s.et === 'vsmr') {
+      if (s.cabg) o.push(rec('IIa', 'B-NR', '<b>MV 수술</b> — CABG와 동시'));
+      if (!s.gdmt) { o.push(rec('I', 'A', '<b>GDMT 최적화</b> (ARNI 포함) ± CRT 먼저', '심부전 전문의가 GDMT를 책임지는 것이 I (C-EO)')); return o; }
+      if (s.le1) { o.push(NONE('기대여명 <1년 — 중재보다 완화')); return o; }
+      if (s.sym && s.lvef < 50) {
+        if (s.coapt && s.anat) o.push(rec('IIa', 'B-R', '<b>TEER</b> — LVEF 20–50%, LVESD ≤70, PASP ≤70, 적합한 해부학', 'COAPT 등록 기준'));
+        else o.push(NONE('TEER 기준 미충족 (' + coaptMiss(s) + ')'));
+        if (s.nyha3 && !s.cabg) o.push(rec('IIb', 'B-NR', 'MV 수술 고려 — NYHA III–IV 지속'));
+      } else if (!s.cabg) o.push(NONE(s.sym ? 'LVEF ≥50% 심실성 MR — 해당 권고 없음' : '무증상 — GDMT 유지, 추적'));
+    } else {
+      if (s.nyha3 && s.omt) o.push(rec('IIb', 'B-NR', 'MV 수술 고려 — 심방성(판륜 확장) MR, LVEF ≥50%, NYHA III–IV', '"atrial secondary MR"이라는 범주로 따로 다루지 않음'));
+      else o.push(NONE('심부전·AF 치료 최적화 — 수술은 NYHA III–IV 지속 시 IIb'));
+    }
+    return o;
+  }
+  function coaptMiss(s) {
+    var m = [];
+    if (!(s.lvef >= 20 && s.lvef <= 50)) m.push('LVEF ' + s.lvef + '%');
+    if (s.lvesd > 70) m.push('LVESD ' + s.lvesd);
+    if (s.spap > 70) m.push('SPAP ' + s.spap);
+    if (!s.anat) m.push('해부학');
+    return m.join(', ') || '—';
+  }
+
+  /* ------------------------------------------------ ESC 2025 */
+  function esc(s) {
+    var o = [];
+    if (!s.severe) {
+      if (s.et === 'vsmr' && s.cabg) return [rec('IIb', 'B', 'MV 수술 고려 — 중등도 심실성 MR + CABG', '재발 MR은 줄지만 사망·임상 이득은 없음 (RCT 4개)')];
+      return [NONE('중등도 MR — 매년 진료, 1–2년마다 심초음파')];
+    }
+    if (s.et === 'pmr') {
+      if (s.sym) {
+        if (s.lowRisk) o.push(rec('I', 'B', '<b>MV 수술</b> — 증상 있는 중증 1차성 MR, 수술 가능', '내구성이 기대되면 성형이 권고 술식 I (B)'));
+        else if (s.anat) o.push(rec('IIa', 'B', '<b>TEER</b> — 증상, 고위험, 해부학 적합'));
+        else o.push(NONE('고위험 + TEER 부적합 — Heart Team (TMVI 등은 1차성 MR 근거 부족)'));
+      } else {
+        var lvd = s.lvesd >= 40 || s.lvesdi >= 20 || s.lvef <= 60;
+        var mk = [s.af && 'AF', s.spap > 50 && 'SPAP >50', s.ladil && 'LA 확장', s.tr && 'TR ≥중등도'].filter(Boolean);
+        if (lvd) o.push(rec('I', 'B', '<b>MV 수술</b> — LV 기능저하 (LVESD ≥40, LVESDi ≥20 또는 LVEF ≤60%)'));
+        else if (mk.length >= 3 && s.lowRisk && s.repair) o.push(rec('I', 'B', '<b>MV 성형</b> — LV 정상이지만 표지자 ' + mk.length + '개: ' + mk.join(', '), '2025년 신설. ACC/AHA에는 대응 권고 없음'));
+        else if (s.spap > 50 || s.af) o.push(rec('IIa', 'B', '<b>MV 수술</b> — ' + [s.spap > 50 && 'SPAP >50 mmHg', s.af && 'MR로 인한 AF'].filter(Boolean).join(', ')));
+        else if (s.ladil && s.lowRisk && s.repair) o.push(rec('IIa', 'B', '<b>MV 성형</b> — 의미 있는 LA 확장 (LAVI ≥60)', 'Heart Valve Centre에서'));
+        else o.push(NONE('적응증 없음 — 연 2회 진료·심초음파 (Heart Valve Clinic)'));
+        if (!lvd && mk.length && mk.length < 3) o[o.length - 1].why = (o[o.length - 1].why ? o[o.length - 1].why + ' · ' : '') + '표지자 ' + mk.length + '개 — 3개 이상이면 I (B)';
+      }
+    } else if (s.et === 'vsmr') {
+      if (s.cabg) o.push(rec('I', 'B', '<b>MV 수술</b> — 중증 심실성 MR + CABG'));
+      if (!s.gdmt) { o.push(rec('I', '', '<b>GDMT 최적화</b> (ARNI·BB·MRA·SGLT2i, 6주 내 증량) ± CRT 후 재평가', '약 40%가 1–3개월 GDMT 후 MR 중증도가 개선됨')); return o; }
+      if (s.le1) { o.push(NONE('기대여명 <1년 — 완화')); return o; }
+      if (s.sym && !s.cabg) {
+        if (s.cad) o.push(rec('IIb', 'C', 'PCI 후 MR 재평가, 이어서 <b>TEER</b> — 단순 CAD'));
+        var miss = table7Miss(s);
+        if (!s.cad) {
+          if (!miss.length) o.push(rec('I', 'A', '<b>TEER</b> — Table 7 기준 모두 충족', '심부전 입원 감소, 삶의 질 개선 (COAPT · RESHAPE-HF2)'));
+          else if (s.anat) o.push(rec('IIb', 'B', '<b>TEER</b> — Table 7 미충족: ' + miss.join(', '), 'LVAD·심장이식 평가 후 증상 개선 목적'));
+          if (!s.anat && !s.stageD) o.push(rec('IIb', 'C', 'MV 수술 고려 — TEER 부적합, 진행성 심부전 아님'));
+        }
+      } else if (!s.cabg) o.push(NONE('무증상 — GDMT 유지, 3–6개월마다 추적'));
+    } else {
+      if (s.sym && s.omt) {
+        if (s.lowRisk) o.push(rec('IIa', 'B', '<b>MV 수술 + 외과적 AF 절제 + LAAO</b> — 증상 있는 중증 심방성 MR'));
+        else if (s.anat) o.push(rec('IIb', 'B', '<b>TEER</b> — 수술 부적합, 리듬 조절 포함 최적화 후'));
+        else o.push(NONE('수술·TEER 모두 부적합 — 약물치료'));
+      } else o.push(NONE('약물치료·리듬 조절 최적화 먼저', '심방성 MR 기준: LVEF ≥50%, LV 정상 또는 경도 확장, 판륜 >35 mm, LAVI >34'));
+    }
+    return o;
+  }
+  function table7Miss(s) {
+    var m = [];
+    if (!s.anat) m.push('해부학'); if (!s.sym) m.push('NYHA ≥II');
+    if (!(s.lvef >= 20 && s.lvef <= 50)) m.push('LVEF 20–50%'); if (s.lvesd > 70) m.push('LVESD ≤70');
+    if (!s.hfh) m.push('심부전 입원/BNP 상승'); if (s.spap > 70) m.push('SPAP ≤70');
+    if (s.rv) m.push('중증 RV 기능부전'); if (s.stageD) m.push('Stage D'); if (s.cad) m.push('재관류 필요 CAD');
+    return m;
+  }
+
+  /* ------------------------------------------------ KSE 2023 */
+  function kse(s) {
+    var o = [];
+    if (!s.severe) return [rec('KSE', '', '중등도 MR — 1–2년마다 심초음파')];
+    if (s.et === 'pmr') {
+      if (s.sym) {
+        if (s.lowRisk) o.push(rec('KSE', '', '<b>MV 수술</b> (가능하면 성형) — LV 기능과 무관'));
+        else if (s.anat) o.push(rec('KSE', '', '<b>TEER</b> — 증상 + 고위험/수술불가 + 해부학 적합', '수술적 성형이 표준; MFDS 2019 승인'));
+        else o.push(rec('KSE', '', 'Heart Team — 해부학과 기대여명 논의'));
+      } else {
+        var t = [s.lvef <= 60 && 'LVEF ≤60%', s.lvesd >= 40 && 'LVESD ≥40', s.af && 'AF', s.spap > 50 && 'PASP >50', s.ladil && 'LA ≥60 mL/m²'].filter(Boolean);
+        if (t.length) o.push(rec('KSE', '', '<b>MV 수술</b> (가능하면 성형) — ' + t.join(', '), '증상과 무관한 중재 촉발 요인 (각각 단독으로)'));
+        else if (s.repair && s.lowRisk) o.push(rec('KSE', '', '<b>MV 수술</b> — 내구성 있는 성형 가능성 높고 저위험', '국내 연구: 50세 이상에서 조기 수술이 심장사망 감소'));
+        else o.push(rec('KSE', '', '경과 관찰 — 6–12개월마다 심초음파'));
+      }
+    } else if (s.et === 'vsmr') {
+      if (s.cabg) o.push(rec('KSE', '', '<b>MV 수술</b> 동시 시행 reasonable — CABG'));
+      if (!s.gdmt) { o.push(rec('KSE', '', '<b>GDMT 최적화</b> (ARNI 고려 — PRIME 연구) ± CRT 먼저')); return o; }
+      if (s.le1) { o.push(rec('KSE', '', '완화의료 고려 — 기대여명 <1년')); return o; }
+      if (s.sym && !s.cabg) {
+        if (s.lvef < 50) {
+          if (s.coapt && s.anat) o.push(rec('KSE', '', '<b>TEER</b> reasonable — 20 ≤ LVEF ≤ 50, LVESD ≤70, PASP ≤70'));
+          else o.push(rec('KSE', '', '<b>MV 수술</b> 또는 심장이식/LVAD — TEER 기준 미충족 (' + coaptMiss(s) + ')'));
+        } else o.push(rec('KSE', '', '<b>MV 수술</b> — LVEF ≥50%'));
+      } else if (!s.cabg) o.push(rec('KSE', '', '무증상 — GDMT 유지, 추적'));
+    } else {
+      if (s.sym) o.push(rec('KSE', '', '<b>링 판륜성형 + AF 절제</b> "can be beneficial"', '심방성 MR에 대한 별도 알고리즘 없음'));
+      else o.push(rec('KSE', '', 'AF·심부전 치료, 추적'));
+    }
+    return o;
+  }
+
+  function render(list) {
+    return list.map(function (r) {
+      var c = r.cls === '—' ? '<span class="chip cls-none">—</span>' : (r.cls === 'KSE' ? '<span class="chip cls-KR">KSE</span>' : chip(r.cls, r.lvl));
+      return '<div class="rec">' + c + '<div class="txt">' + r.txt + (r.why ? '<span class="why">' + r.why + '</span>' : '') + '</div></div>';
+    }).join('');
+  }
+  function card(cls, name, ed, list) {
+    return '<div class="verdict ' + cls + '"><div class="vh"><span>' + name + '</span><span class="ed">' + ed + '</span></div><div class="vb">' + render(list) + '</div></div>';
+  }
+  /* What does a guideline mainly recommend? Use only its strongest-class lines
+     (KSE has no classes, so all its lines count), and ignore risk wording such
+     as "수술불가" that names surgery without recommending it. */
+  function kind(list) {
+    var top = topClass(list) || 'KSE';
+    var t = list.filter(function (r) { return r.cls === top; }).map(function (r) { return r.txt.replace(/<[^>]+>/g, ''); }).join(' ');
+    if (/GDMT 최적화/.test(t)) return 'GDMT 먼저';
+    var teer = /TEER/.test(t), surg = /수술|성형|판륜/.test(t.replace(/수술\s?불가|수술 부적합|수술적 성형이 표준|수술 가능/g, ''));
+    if (teer && surg) return 'TEER·수술';
+    if (teer) return 'TEER';
+    if (surg) return '수술';
+    return '중재 안 함';
+  }
+  function topClass(list) {
+    var order = ['I', 'IIa', 'IIb'];
+    for (var i = 0; i < order.length; i++) if (list.some(function (r) { return r.cls === order[i]; })) return order[i];
+    return null;
+  }
+
+  function update() {
+    var s = read();
+    document.querySelectorAll('.cond').forEach(function (el) { var kv = el.getAttribute('data-show').split('='); el.hidden = s[kv[0]] !== kv[1]; });
+    var a = acc(s), e = esc(s), k = kse(s);
+    $('verdicts').innerHTML = card('us', '미국 ACC/AHA', '2020', a) + card('eu', '유럽 ESC/EACTS', '2025', e) + card('kr', '한국 KSE', '2023', k);
+    var ka = kind(a), ke = kind(e), kk = kind(k), ca = topClass(a), ce = topClass(e);
+    var txt = (ka === ke && ke === kk) ? '<b>세 기준의 방향이 같습니다</b> — ' + ka : '<b>세 기준이 갈립니다</b> — 미국: ' + ka + ' · 유럽: ' + ke + ' · 한국: ' + kk;
+    if (ka === ke && ca && ce && ca !== ce) txt += '. 방향은 같지만 등급이 다릅니다 (미국 ' + ca + ' · 유럽 ' + ce + ').';
+    $('diff').innerHTML = txt;
+  }
+
+  /* severity mini-calculator */
+  function sev() {
+    var et = $('s_et').value, e = parseFloat($('s_eroa').value), v = parseFloat($('s_rvol').value);
+    var rows = et === 'sec'
+      ? [['<span class="lin us">ACC/AHA 2020</span>', 40, 60, 'PISA 과소평가는 각주로만'], ['<span class="lin eu">ESC 2025</span>', 30, 45, '2차성은 낮춘 기준'],
+         ['<span class="lin kr">KSE 2023</span>', 40, 60, '1차성과 같은 기준'], ['<span class="lin eu">ESC 2021</span> (과거)', 40, 60, '타원형 역류구·저유량이면 ≥30 / ≥45 가능'], ['<span class="lin eu">ESC 2012</span> (과거)', 20, 30, '예후 기준']]
+      : [['<span class="lin us">ACC/AHA 2020</span>', 40, 60, ''], ['<span class="lin eu">ESC 2025</span>', 40, 60, ''], ['<span class="lin kr">KSE 2023</span>', 40, 60, '']];
+    $('sevtab').innerHTML = rows.map(function (r) {
+      var sevr = e >= r[1] || v >= r[2];
+      return '<tr><td>' + r[0] + '</td><td>EROA ≥' + r[1] + ' mm² 또는 RVol ≥' + r[2] + ' mL' + (r[3] ? '<span class="why src"> · ' + r[3] + '</span>' : '') + '</td>' +
+        '<td class="' + (sevr ? 'cls-IIb' : 'cls-none') + '"><b>' + (sevr ? '중증' : '중증 아님') + '</b></td></tr>';
+    }).join('');
+  }
+
+  IDS.forEach(function (k) { var el = $(k); el.addEventListener(el.type === 'number' ? 'input' : 'change', update); });
+  ['s_et', 's_eroa', 's_rvol'].forEach(function (k) { $(k).addEventListener('input', sev); $(k).addEventListener('change', sev); });
+  document.querySelectorAll('#presets button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('#presets button').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+      b.setAttribute('aria-pressed', 'true'); load(PRESETS[b.getAttribute('data-p')]); update();
+    });
+  });
+  var start = document.querySelector('#presets button[data-p="' + location.hash.slice(1) + '"]') || document.querySelector('#presets button');
+  start.click(); sev();
+})();
+</script>
+</body>
+</html>
